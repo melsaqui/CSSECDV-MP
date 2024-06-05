@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html>
-    <head><title>Login</title></head>
+    <head>    
+        <meta charset="UTF-8">
+        <title>Login</title>
+    </head>
 <body>
-<h1>Registration Page</h1>
-<form>
+<h1>Login Page</h1>
+<form action = '/login', method = "POST">
     <div>
-      
+        <div class="msg">{{msg}}</div>
+
         <hr>
         <label for="user"><b>Email</b></label>
         <input type="text" placeholder="Enter Email" name="user" id="user" required>
 
         <hr>
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+        <label for="pass"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="pass" id="pass" required>
         <hr>
         
-        <button type="submit" class="loginbtn">Register</button>
+        <button type="submit" class="loginbtn">Login</button>
 
     
     </div>
 </form>
 <div class="container register">
-    <p>No Acount Yet? Register Now! <a href="#">Register Now!</a>.</p>
+    <p>No Acount Yet? Register Now! <a href="/register">Register Now!</a>.</p>
 </div>
 
 </body>
