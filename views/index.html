@@ -8,7 +8,9 @@
 <h1>Home</h1>
 <p>hello {{ user }}</p>
 <a href ="/logout" class="btn">Logout</a>
+{% if admin %}
+    <a href="/admin" class="btn">See Admin Panel</a>
+{% endif %}
 
-<a href="/admin" class="btn" style = "visibility: hidden;" >See Admin Panel</a>
 </body>
 </html>

@@ -18,7 +18,7 @@ mysql = MySQL(app)
 @app.route('/admin')
 def admin():
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE email = % s', (session['email'], ))
+    cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE id =% s', (session['id'], ))
     account = cursor.fetchone()
     if account['admin']==1:
         return render_template('admin.html')
@@ -33,10 +33,12 @@ def logout():
 @app.route('/')
 def home():
     if session:
-        user=session['email']
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE email = % s and id =% s', (session['email'],session['id'], ))
+        account = cursor.fetchone()
+        user=account['fname']  
         
-            
-        return render_template('index.html',user =user)
+        return render_template('index.html',user =user, admin=account['admin'])
     else:
         return redirect('/login')
 
@@ -96,6 +98,7 @@ def register():
         elif not email or not password or not phone or not reppass or not fname or not lname:
             msg = 'Please fill out the form !'
         else:
+            #                                            ID, fname,lname,email,phone,admin
             cursor.execute('INSERT INTO accounts VALUES (NULL, % s, % s, % s, %s, %s,False)', (fname, lname, email, phone,(hashed) ))
             mysql.connection.commit()
             msg = 'You have successfully registered !'
