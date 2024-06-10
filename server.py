@@ -15,17 +15,27 @@ app.config['MYSQL_DB'] = 'cssecdv-mp'
 app.config['MYSQL_CURSORCLASS'] = "DictCursor"
 
 mysql = MySQL(app)
-#@app.route('/login')
+@app.route('/admin')
+def admin():
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE email = % s', (session['email'], ))
+    account = cursor.fetchone()
+    if account['admin']==1:
+        return render_template('admin.html')
+    else: 
+        return redirect('/')
 @app.route('/logout')
 def logout():
     session.pop('loggedin', None)
     session.pop('id', None)
-    session.pop('username', None)
+    session.pop('email', None)
     return redirect('/login')
 @app.route('/')
 def home():
-    if session['loggedin']:
+    if session:
         user=session['email']
+        
+            
         return render_template('index.html',user =user)
     else:
         return redirect('/login')
@@ -49,9 +59,9 @@ def login():
                 session['email'] = account['email']
                 msg = 'Logged in successfully !'
                 
-                return render_template('index.html',user = account['email'])
+                return redirect('/')
             else:
-                msg = 'Incorrect username / password !'
+                msg = 'Incorrect username / password !' #do not give potential malicious actors a hint
 
         else:
             msg = 'Incorrect username / password !'
@@ -59,7 +69,7 @@ def login():
 @app.route('/register', methods = ['GET', 'POST'])
 def register():
     msg = ''
-    if request.method == 'POST' and 'psw' in request.form and 'email' in request.form:
+    if request.method == 'POST' and 'psw-repeat' in request.form and'psw' in request.form and 'email' in request.form and 'fname' in request.form and 'lname' in request.form and 'phone' in request.form:
         fname = request.form['fname']
         lname = request.form['lname']
         password = request.form['psw']
@@ -79,7 +89,7 @@ def register():
             msg = 'Invalid Name!'
         elif not re.match(r'[A-Za-z]+', lname):
             msg = 'Invalid Name!'
-        elif not re.match(r'^09\d{9}',phone):
+        elif not re.match(r'^09\d{9}$',phone) and not re.match((r'^[+]{1}(?:[0-9\-\(\)\/\.]\s?){6, 15}[0-9]{1}$',phone)): #https://www.geeksforgeeks.org/validate-phone-numbers-with-country-code-extension-using-regular-expression/
             msg= "invalid phone number"
         elif password!=reppass:
             msg= "Passwords not matching"
