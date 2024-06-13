@@ -20,7 +20,7 @@ def admin():
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE id =% s', (session['id'], ))
     account = cursor.fetchone()
-    if account['admin']==1:
+    if account['admin']==1:  
         return render_template('admin.html')
     else: 
         return redirect('/')
