@@ -1,77 +1,166 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+import os
+import time
+from flask import Flask, render_template, request, redirect, session, flash, url_for
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import bcrypt
 import re
+from werkzeug.utils import secure_filename
 
-app = Flask(__name__,template_folder='views')
-    
-app.secret_key = 'your secret key'
- 
+app = Flask(__name__, template_folder='views')
+app.secret_key = 'your_secret_key'
+
+# MySQL configurations
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'Lacsapcshs2020*'
 app.config['MYSQL_DB'] = 'cssecdv-mp'
-app.config['MYSQL_CURSORCLASS'] = "DictCursor"
+app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
+# Initialize MySQL
 mysql = MySQL(app)
+
+# Configure upload folder and allowed file types
+UPLOAD_FOLDER = 'path_to_your_upload_folder'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+# Dictionary to track login attempts per IP address
+login_attempts = {}
+
+# Constants for brute force protection
+MAX_ATTEMPTS = 5
+BLOCK_DURATION = 300  # 5 minutes
+TIME_FRAME = 600  # 10 minutes
+
+# Function to check if file extension is allowed
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+# Function to limit login attempts per IP address
+def limit_attempts():
+    client_ip = request.remote_addr
+    current_time = time.time()
+
+    if client_ip in login_attempts:
+        attempts, first_attempt_time = login_attempts[client_ip]
+
+        if attempts >= MAX_ATTEMPTS:
+            if current_time - first_attempt_time < BLOCK_DURATION:
+                return False
+            else:
+                # Reset attempts after block duration
+                login_attempts[client_ip] = [0, current_time]
+        elif current_time - first_attempt_time > TIME_FRAME:
+            # Reset attempts after the time frame
+            login_attempts[client_ip] = [0, current_time]
+    else:
+        login_attempts[client_ip] = [0, current_time]
+
+    return True
+
+# Route to handle profile picture upload
+@app.route('/upload_profile_pic', methods=['POST'])
+def upload_profile_pic():
+    if 'loggedin' not in session:
+        return redirect('/login')
+
+    if 'profile_pic' not in request.files:
+        flash('No file part')
+        return redirect(request.url)
+
+    file = request.files['profile_pic']
+
+    if file.filename == '':
+        flash('No selected file')
+        return redirect(request.url)
+
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        file.save(filepath)
+
+        # Update database with profile picture path or filename
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('UPDATE accounts SET profile_pic = %s WHERE id = %s', (filename, session['id']))
+        mysql.connection.commit()
+        cursor.close()
+
+        flash('Profile picture uploaded successfully')
+        return redirect(url_for('home'))
+
+    else:
+        flash('Invalid file format. Allowed formats are .jpg, .jpeg, .png')
+        return redirect(request.url)
+
+# Route to handle login
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    msg = ''
+    if request.method == 'POST' and 'pass' in request.form and 'user' in request.form:
+        if not limit_attempts():
+            msg = 'Too many login attempts. Please try again later.'
+            return render_template('login.html', msg=msg)
+
+        password = request.form['pass']
+        user = request.form['user']
+
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('SELECT * FROM accounts WHERE email = %s', (user,))
+        account = cursor.fetchone()
+
+        if account and bcrypt.checkpw(password.encode('utf-8'), account['password'].encode('utf-8')):
+            session['loggedin'] = True
+            session['id'] = account['id']
+            session['email'] = account['email']
+            msg = 'Logged in successfully!'
+            return redirect('/')
+        else:
+            msg = 'Incorrect username / password!'
+            # Increment failed attempts for the current IP
+            client_ip = request.remote_addr
+            if client_ip in login_attempts:
+                login_attempts[client_ip][0] += 1
+            else:
+                login_attempts[client_ip] = [1, time.time()]
+
+    return render_template('login.html', msg=msg)
+
+# Additional routes and functions as per your existing application...
+
 @app.route('/admin')
 def admin():
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE id =% s', (session['id'], ))
+    cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE id =%s', (session['id'], ))
     account = cursor.fetchone()
-    if account['admin']==1:  
+    if account['admin'] == 1:  
         return render_template('admin.html')
     else: 
         return redirect('/')
+
 @app.route('/logout')
 def logout():
     session.pop('loggedin', None)
     session.pop('id', None)
     session.pop('email', None)
     return redirect('/login')
+
 @app.route('/')
 def home():
     if session:
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE email = % s and id =% s', (session['email'],session['id'], ))
+        cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE email = %s and id = %s', (session['email'], session['id'],))
         account = cursor.fetchone()
-        user=account['fname']  
-        
-        return render_template('index.html',user =user, admin=account['admin'])
+        user = account['fname']  
+        return render_template('index.html', user=user, admin=account['admin'])
     else:
         return redirect('/login')
 
-@app.route('/login', methods = ['GET', 'POST'])
-def login():
-    msg = ''
-    if request.method == 'POST' and 'pass' in request.form and 'user' in request.form:
-        password = request.form['pass']
-        user=request.form['user']
-        
-        #salt = bcrypt.gensalt(rounds=20)
-        #hashed_password = bcrypt.hashpw(bytes(password, 'utf-8'), salt)
-        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE email = % s', (user, ))
-        account = cursor.fetchone()
-        if account:
-            if bcrypt.checkpw(bytes(password, 'utf-8'), account['password']):
-                session['loggedin'] = True
-                session['id'] = account['id']
-                session['email'] = account['email']
-                msg = 'Logged in successfully !'
-                
-                return redirect('/')
-            else:
-                msg = 'Incorrect username / password !' #do not give potential malicious actors a hint
-
-        else:
-            msg = 'Incorrect username / password !'
-    return render_template('login.html',msg=msg)
-@app.route('/register', methods = ['GET', 'POST'])
+@app.route('/register', methods=['GET', 'POST'])
 def register():
     msg = ''
-    if request.method == 'POST' and 'psw-repeat' in request.form and'psw' in request.form and 'email' in request.form and 'fname' in request.form and 'lname' in request.form and 'phone' in request.form:
+    if request.method == 'POST' and 'psw-repeat' in request.form and 'psw' in request.form and 'email' in request.form and 'fname' in request.form and 'lname' in request.form and 'phone' in request.form:
         fname = request.form['fname']
         lname = request.form['lname']
         password = request.form['psw']
@@ -81,30 +170,31 @@ def register():
         salt = bcrypt.gensalt(rounds=20)
         hashed = bcrypt.hashpw(bytes(password, 'utf-8'), salt)
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute('SELECT * FROM accounts WHERE email = % s', (email, ))
+        cursor.execute('SELECT * FROM accounts WHERE email = %s', (email,))
         account = cursor.fetchone()
         if account:
-            msg = 'Account already exists !'
+            msg = 'Account already exists!'
         elif not re.match(r'[^@]+@[^@]+\.[^@]+', email):
-            msg = 'Invalid email address !'
+            msg = 'Invalid email address!'
         elif not re.match(r'[A-Za-z]+', fname):
             msg = 'Invalid Name!'
         elif not re.match(r'[A-Za-z]+', lname):
             msg = 'Invalid Name!'
-        elif not re.match(r'^09\d{9}$',phone) and not re.match((r'^[+]{1}(?:[0-9\-\(\)\/\.]\s?){6, 15}[0-9]{1}$',phone)): #https://www.geeksforgeeks.org/validate-phone-numbers-with-country-code-extension-using-regular-expression/
-            msg= "invalid phone number"
-        elif password!=reppass:
-            msg= "Passwords not matching"
+        elif not re.match(r'^09\d{9}$', phone) and not re.match(r'^[+]{1}(?:[0-9\-\(\)\/\.]\s?){6,15}[0-9]{1}$', phone):
+            msg = "Invalid phone number"
+        elif password != reppass:
+            msg = "Passwords not matching"
         elif not email or not password or not phone or not reppass or not fname or not lname:
-            msg = 'Please fill out the form !'
+            msg = 'Please fill out the form!'
         else:
-            #                                            ID, fname,lname,email,phone,admin
-            cursor.execute('INSERT INTO accounts VALUES (NULL, % s, % s, % s, %s, %s,False)', (fname, lname, email, phone,(hashed) ))
+            cursor.execute('INSERT INTO accounts VALUES (NULL, %s, %s, %s, %s, %s, False)', (fname, lname, email, phone, hashed))
             mysql.connection.commit()
-            msg = 'You have successfully registered !'
+            msg = 'You have successfully registered!'
+
     elif request.method == 'POST':
-        msg = 'Please fill out the form !'
-    return render_template('reg.html', msg = msg)
-   # return render_template('reg.html')
-#if __name__ == "__main__":
-#    app.run(host="0.0.0.0", port=8000, debug=True)
+        msg = 'Please fill out the form!'
+
+    return render_template('reg.html', msg=msg)
+
+if __name__ == '__main__':
+    app.run(debug=True)
