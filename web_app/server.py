@@ -106,5 +106,5 @@ def register():
         msg = 'Please fill out the form !'
     return render_template('reg.html', msg = msg)
    # return render_template('reg.html')
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8000, debug=True)
+#if __name__ == "__main__":
+#    app.run(host="0.0.0.0", port=8000, debug=True)
