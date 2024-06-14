@@ -61,7 +61,7 @@ def limit_attempts():
     return True
 
 # Route to handle profile picture upload
-@app.route('/upload_profile_pic', methods=['POST'])
+@app.route('/upload-profile-picture', methods=['POST'])
 def upload_profile_pic():
     if 'loggedin' not in session:
         return redirect('/login')
