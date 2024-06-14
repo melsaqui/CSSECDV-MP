@@ -21,7 +21,7 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 mysql = MySQL(app)
 
 # Configure upload folder and allowed file types
-UPLOAD_FOLDER = 'path_to_your_upload_folder'
+UPLOAD_FOLDER = 'upload_folder'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -61,43 +61,45 @@ def limit_attempts():
     return True
 
 # Route to handle profile picture upload
-@app.route('/upload-profile-picture', methods=['POST'])
+@app.route('/upload-profile-picture', methods=['GET','POST'])
 def upload_profile_pic():
-    if 'loggedin' not in session:
-        return redirect('/login')
-
+    #if 'loggedin' not in session:
+     #   return redirect('/login')
+    
     if 'profile_pic' not in request.files:
         flash('No file part')
-        return redirect(request.url)
+        return redirect('/')
+    
+    if request.method == 'POST':
+        
+        file = request.files['profile_pic']
 
-    file = request.files['profile_pic']
+        if file.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
 
-    if file.filename == '':
-        flash('No selected file')
-        return redirect(request.url)
-
-    if file and allowed_file(file.filename):
-        filename = secure_filename(file.filename)
-        filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-        file.save(filepath)
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            file.save(filepath)
 
         # Update database with profile picture path or filename
-        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute('UPDATE accounts SET profile_pic = %s WHERE id = %s', (filename, session['id']))
-        mysql.connection.commit()
-        cursor.close()
+            cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+            cursor.execute('UPDATE accounts SET profile_pic = %s WHERE id = %s', (filename, session['id']))
+            mysql.connection.commit()
+            cursor.close()
 
-        flash('Profile picture uploaded successfully')
-        return redirect(url_for('home'))
+            flash('Profile picture uploaded successfully')
+            return redirect('/')
 
-    else:
-        flash('Invalid file format. Allowed formats are .jpg, .jpeg, .png')
-        return redirect(request.url)
+        else:
+            flash('Invalid file format. Allowed formats are .jpg, .jpeg, .png')
+            return redirect(request.url)
 
 # Route to handle login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    #if session and session['loggedIn']:
+    if session==None:
 
         msg = ''
         if request.method == 'POST' and 'pass' in request.form and 'user' in request.form:
@@ -128,7 +130,8 @@ def login():
                     login_attempts[client_ip] = [1, time.time()]
 
         return render_template('login.html', msg=msg)
-    
+    else:
+        return redirect('/')
 
 # Additional routes and functions as per your existing application...
 
