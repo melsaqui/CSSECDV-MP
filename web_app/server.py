@@ -64,8 +64,8 @@ def limit_attempts():
 # Route to handle profile picture upload
 @app.route('/upload-profile-picture', methods=['GET','POST'])
 def upload_profile_pic():
-    #if 'loggedin' not in session:
-     #   return redirect('/login')
+    if 'loggedin' not in session:
+        return redirect('/login')
     
     
     
@@ -140,7 +140,7 @@ def login():
 
 @app.route('/admin')
 def admin():
-    if session and session['linkedin']:
+    if session and session['loggedin']:
 
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE id =%s', (session['id'], ))
@@ -162,7 +162,7 @@ def logout():
 
 @app.route('/')
 def home():
-    if session:
+    if session and session['loggedin']:
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE email = %s and id = %s', (session['email'], session['id'],))
         account = cursor.fetchone()
@@ -173,7 +173,7 @@ def home():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    if session and session['loggedIn']:
+    if session and session['loggedin']:
        return redirect('/')
     else:
         msg = ''
