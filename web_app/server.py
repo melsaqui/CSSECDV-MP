@@ -191,7 +191,7 @@ def register():
             account = cursor.fetchone()
             if account:
                 msg = 'Account already exists!'
-            elif not re.match(r'[^@]+@[^@]+\.[^@]+', email):
+            elif not re.match(r'[^(([a-zA-Z0-9]+)(([-_.][a-zA-Z0-9]+)*))@(([a-zA-Z0-9-]+\.[a-zA-Z]{2,})+)$', email):
                 msg = 'Invalid email address!'
             elif not re.match(r'[A-Za-z]+', fname):
                 msg = 'Invalid Name!'
