@@ -184,14 +184,14 @@ def register():
             reppass = request.form['psw-repeat']
             email = request.form['email']
             phone = request.form['phone']
-            salt = bcrypt.gensalt(rounds=20)
+            salt = bcrypt.gensalt(rounds=12)
             hashed = bcrypt.hashpw(bytes(password, 'utf-8'), salt)
             cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
             cursor.execute('SELECT * FROM accounts WHERE email = %s', (email,))
             account = cursor.fetchone()
             if account:
                 msg = 'Account already exists!'
-            elif not re.match(r'[^(([a-zA-Z0-9]+)(([-_.][a-zA-Z0-9]+)*))@(([a-zA-Z0-9-]+\.[a-zA-Z]{2,})+)$', email):
+            elif not re.match(r'^(([a-zA-Z0-9]+)(([-_.][a-zA-Z0-9]+)*))@(([a-zA-Z0-9-]+\.[a-zA-Z]{2,})+)$', email):
                 msg = 'Invalid email address!'
             elif not re.match(r'[A-Za-z]+', fname):
                 msg = 'Invalid Name!'
