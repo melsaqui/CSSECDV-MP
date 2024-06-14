@@ -6,6 +6,7 @@ import MySQLdb.cursors
 import bcrypt
 import re
 from werkzeug.utils import secure_filename
+import sys
 
 app = Flask(__name__, template_folder='views')
 app.secret_key = 'your_secret_key'
@@ -21,7 +22,7 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 mysql = MySQL(app)
 
 # Configure upload folder and allowed file types
-UPLOAD_FOLDER = 'upload_folder'
+UPLOAD_FOLDER = './upload_folder'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -66,12 +67,13 @@ def upload_profile_pic():
     #if 'loggedin' not in session:
      #   return redirect('/login')
     
-    if 'profile_pic' not in request.files:
-        flash('No file part')
-        return redirect('/')
+    
     
     if request.method == 'POST':
-        
+        if 'profile_pic' not in request.files:
+            flash('No file part')
+            return redirect('/')
+    
         file = request.files['profile_pic']
 
         if file.filename == '':
@@ -99,8 +101,9 @@ def upload_profile_pic():
 # Route to handle login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    if session==None:
-
+    if session and session['loggedin']:
+        return redirect('/')
+    else:
         msg = ''
         if request.method == 'POST' and 'pass' in request.form and 'user' in request.form:
             if not limit_attempts():
@@ -130,14 +133,14 @@ def login():
                     login_attempts[client_ip] = [1, time.time()]
 
         return render_template('login.html', msg=msg)
-    else:
-        return redirect('/')
+    #else:
+    #    return redirect('/')
 
 # Additional routes and functions as per your existing application...
 
 @app.route('/admin')
 def admin():
-    if session:
+    if session and session['linkedin']:
 
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE id =%s', (session['id'], ))
@@ -154,6 +157,7 @@ def logout():
     session.pop('loggedin', None)
     session.pop('id', None)
     session.pop('email', None)
+    session.clear()
     return redirect('/login')
 
 @app.route('/')
@@ -169,7 +173,7 @@ def home():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    if session:
+    if session and session['loggedIn']:
        return redirect('/')
     else:
         msg = ''
