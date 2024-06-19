@@ -9,7 +9,7 @@ from werkzeug.utils import secure_filename
 import sys
 
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 app.secret_key = 'your_secret_key'
 
 # MySQL configurations
