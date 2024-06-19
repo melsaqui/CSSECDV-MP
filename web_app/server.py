@@ -8,7 +8,8 @@ import re
 from werkzeug.utils import secure_filename
 import sys
 
-app = Flask(__name__, template_folder='views')
+
+app = Flask(__name__)
 app.secret_key = 'your_secret_key'
 
 # MySQL configurations
@@ -20,7 +21,6 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 # Initialize MySQL
 mysql = MySQL(app)
-
 # Configure upload folder and allowed file types
 UPLOAD_FOLDER = './upload_folder'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
