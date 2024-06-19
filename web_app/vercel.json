@@ -3,11 +3,8 @@
       {
           "src": "./server.py",
           "use": "@vercel/python"
-      },
-      {
-          "src": "/views/**",
-          "use": "@vercel/views"
       }
+      
   ],
   "routes": [
       {
