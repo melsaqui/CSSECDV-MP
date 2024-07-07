@@ -7,6 +7,8 @@ import bcrypt
 import re
 from werkzeug.utils import secure_filename
 import sys
+from datetime import timedelta
+
 
 
 app = Flask(__name__, template_folder='templates')
@@ -34,6 +36,8 @@ login_attempts = {}
 MAX_ATTEMPTS = 5
 BLOCK_DURATION = 300  # 5 minutes
 TIME_FRAME = 600  # 10 minutes
+
+app.permanent_session_lifetime = timedelta(minutes=30)
 
 # Function to check if file extension is allowed
 def allowed_file(filename):
@@ -116,6 +120,7 @@ def login():
             account = cursor.fetchone()
 
             if account and bcrypt.checkpw(password.encode('utf-8'), account['password']):
+                session.permanent = True
                 session['loggedin'] = True
                 session['id'] = account['id']
                 session['email'] = account['email']
@@ -143,8 +148,9 @@ def admin():
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE id =%s', (session['id'], ))
         account = cursor.fetchone()
+        user = account['fname']
         if account['admin'] == 1:  
-            return render_template('admin.html')
+            return render_template('admin.html',user=user)
         else: 
             return redirect('/')
     else:
@@ -215,4 +221,5 @@ def register():
         return render_template('reg.html', msg=msg)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(ssl_context='adhoc',debug=True) #pip install pyopenssl to have https
+    #refereence for self-signed SSL
