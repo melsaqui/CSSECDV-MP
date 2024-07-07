@@ -64,10 +64,8 @@ def limit_attempts():
 # Route to handle profile picture upload
 @app.route('/upload-profile-picture', methods=['GET','POST'])
 def upload_profile_pic():
-    if 'loggedin' not in session:
+    if session and 'loggedin' in session.keys() and session['loggedin']:
         return redirect('/login')
-    
-    
     
     if request.method == 'POST':
         if 'profile_pic' not in request.files:
@@ -101,7 +99,7 @@ def upload_profile_pic():
 # Route to handle login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    if session and session['loggedin']:
+    if session and 'loggedin' in session.keys() and session['loggedin']:
         return redirect('/')
     else:
         msg = ''
@@ -140,7 +138,7 @@ def login():
 
 @app.route('/admin')
 def admin():
-    if session and session['loggedin']:
+    if session and 'loggedin' in session.keys() and session['loggedin']:
 
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE id =%s', (session['id'], ))
@@ -154,15 +152,18 @@ def admin():
 
 @app.route('/logout')
 def logout():
-    session.pop('loggedin', None)
-    session.pop('id', None)
-    session.pop('email', None)
-    session.clear()
-    return redirect('/login')
+    if session and 'loggedin' in session.keys() and session['loggedin']:
+        session.pop('loggedin', None)
+        session.pop('id', None)
+        session.pop('email', None)
+        session.clear()
+        return redirect('/login')
+    else:
+        return redirect('/login')
 
 @app.route('/')
 def home():
-    if session and session['loggedin']:
+    if session and 'loggedin' in session.keys() and session['loggedin']:
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE email = %s and id = %s', (session['email'], session['id'],))
         account = cursor.fetchone()
@@ -173,7 +174,7 @@ def home():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    if session and session['loggedin']:
+    if session and 'loggedin' in session.keys() and session['loggedin']:
        return redirect('/')
     else:
         msg = ''
