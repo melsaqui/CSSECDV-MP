@@ -222,4 +222,4 @@ def register():
 
 if __name__ == '__main__':
     app.run(ssl_context='adhoc',debug=True) #pip install pyopenssl to have https
-    #refereence for self-signed SSL
+    #refereence for self-signed SSL: https://blog.miguelgrinberg.com/post/running-your-flask-application-over-https
