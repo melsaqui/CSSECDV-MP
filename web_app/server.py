@@ -177,7 +177,6 @@ def home():
         return render_template('index.html', user=user, admin=account['admin'])
     else:
         return redirect('/login')
-
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if session and 'loggedin' in session.keys() and session['loggedin']:
@@ -206,6 +205,8 @@ def register():
                 msg = 'Invalid Name!'
             elif not re.match(r'^09\d{9}$', phone) and not re.match(r'^[+]{1}(?:[0-9\-\(\)\/\.]\s?){6,15}[0-9]{1}$', phone):
                 msg = "Invalid phone number"
+            elif len(password) < 8:
+                msg = "Password should be at least 8 characters!"
             elif password != reppass:
                 msg = "Passwords not matching"
             elif not email or not password or not phone or not reppass or not fname or not lname:
