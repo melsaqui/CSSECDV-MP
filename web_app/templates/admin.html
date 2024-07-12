@@ -24,7 +24,9 @@
     <tr>
         <td> {{ r["email"] }} </td> 
         <td> {{ r["role"] }} </td>
-        <td> <form action="/change/{{r['id']}}" method = "post"><input type="button" value = "change role"/></form></td>
+        <td>  <a href="/admin/change/{{r['id']}}">
+            <button>change role</button>
+         </a></td>
     {% endfor %}
 </table>
 {% endblock %}

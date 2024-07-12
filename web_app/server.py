@@ -151,7 +151,7 @@ def login():
     #    return redirect('/')
 
 # Additional routes and functions as per your existing application...
-@app.route('/admin/change/<user_id>')
+@app.route('/admin/change/<int:user_id>', methods=['GET', 'POST'])
 def change_role(user_id):
     if session and 'loggedin' in session.keys() and session['loggedin']:
         if user_id:
