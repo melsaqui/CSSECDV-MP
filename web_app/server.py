@@ -9,6 +9,7 @@ from werkzeug.utils import secure_filename
 import sys
 from datetime import timedelta
 from dotenv import load_dotenv #pip install python-dotenv
+#from flask_modals import response
 
 
 app = Flask(__name__, template_folder='templates')
@@ -151,45 +152,47 @@ def login():
     #    return redirect('/')
 
 # Additional routes and functions as per your existing application...
+def get_count_admin():
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE `admin`=TRUE')
+    count = len(cursor.fetchall())
+    return count
+
+    
 @app.route('/admin/change/<int:user_id>', methods=['GET', 'POST'])
 def change_role(user_id):
     if session and 'loggedin' in session.keys() and session['loggedin']:
-        if user_id:
-            cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-            cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE id =%s', (session['id'], ))
-            account = cursor.fetchone()
-            if account['admin'] == 1:  
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE id =%s', (session['id'], ))
+        account = cursor.fetchone()
+        if account['admin'] == 1:  
+            if user_id and user_id!="":
                 cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE id =%s', (user_id, ))
                 target =cursor.fetchone()
                 if target:
                     newRole = not target['admin']
-                    if target['admin']==0:
+                    adminCount= get_count_admin()
+
+                    if target['admin']==0 or (target['admin']==1 and adminCount>1 ):
                         cursor.execute(f'UPDATE `cssecdv-mp`.accounts SET `admin` ={newRole} WHERE id={user_id}' )
                         mysql.connection.commit()
                         return redirect('/admin')
-                    elif target['admin']==1:
-                    #check how many admins 
-                        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-                        cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE `admin`=TRUE')
-                        adminCount= cursor.fetchall()
-                        newRole = not target['admin']
-                        if len(adminCount)>1:
-                            cursor.execute(f'UPDATE `cssecdv-mp`.accounts SET `admin` ={newRole} WHERE id={user_id}' )
-                            mysql.connection.commit()
-                            return redirect('/admin')
-                        else:
+                    
+                    elif target['admin']==1 and adminCount<=1:
                         #won't flash so user might be clueless why it didn't change
-                            flash("We need to have at least one admin!!")
-                            return redirect('/admin')
-                    else:
-                        return redirect('/admin') 
+                        flash("We need to have at least one admin!!")
+                        return redirect('/admin')
                 else:
-                    return redirect('/admin')
-            else: 
-                return redirect('/')  
+                    #target doesn't exist or has not valid role
+                    return redirect('/admin') 
+            else:
+                return redirect('/admin')
+       
         else: 
-            return redirect('/admin')     
+            #not admin
+            return redirect('/')     
     else:
+        #not loggedin
         return redirect('/login')
 
 @app.route('/admin')

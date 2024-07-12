@@ -24,13 +24,22 @@
     <tr>
         <td> {{ r["email"] }} </td> 
         <td> {{ r["role"] }} </td>
+        {% if r["role"] == 'Admin' %}
         <td>  <a href="/admin/change/{{r['id']}}">
-            <button>change role</button>
+            <button>Downgrade Privileges</button>
          </a></td>
+         {% elif r["role"] == 'Regular' %}
+         <td>  <a href="/admin/change/{{r['id']}}">
+            <button>Upgrade Privileges</button>
+         </a></td>
+        {% endif %}
+
     {% endfor %}
 </table>
 {% endblock %}
-{{msg}}
+<div class="modal-body">
+
+</div>
 <p><a href ="/" class="btn">Back Home</a></p>
 <p><a href="/logout" class="btn">Logout</a></p>
 </body>
