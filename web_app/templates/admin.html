@@ -5,40 +5,40 @@
         <title>Admin Panel</title>
     </head>
 <body>
-<h1>Admin</h1>
-<p>hello Admin {{ user }}</p>
+<h1>Administration Panel</h1>
+<p>Hello Admin {{ user }}</p>
+
 {% block body %}
 <style>
     table, th, td {
         border: 1px solid black;
         padding: 5px;
     }
+    
 </style>
 <table>
     <tr>
-        <th>User</th>
-        <th>Role</th>
-        <th>Change Roles</th>
+        <th style="width: 300px">Users</th>
+        <th style="width: 100px">Roles</th>
+        <th style="width: 100px">Change Roles</th>
     </tr>
 
     {% for r in records %}
     <tr>
         <td> {{ r["email"] }} </td> 
-        <td> {{ r["role"] }} </td>
-        
-        {% if r["role"] == 'Admin' %}
-        <td>  
+        <td style = "text-align: center;"> {{ r["role"] }} </td>
+
+        <td style = "text-align: center;">  
             <a href="/admin/change/{{r['id']}}">
-                <button>Downgrade</button>
+                {% if r["role"] == 'Admin' %}
+                <button style="width: 90px;">Downgrade</button>
+                {% elif r["role"] == 'Regular' %}
+                <button style="width: 90px;">Upgrade</button>
+                {% endif %}
+
             </a>
         </td>
-        {% elif r["role"] == 'Regular' %}
-        <td>  
-            <a href="/admin/change/{{r['id']}}">
-                <button>Upgrade</button>
-            </a>
-        </td>
-        {% endif %}
+      
 
     {% endfor %}
 </table>
