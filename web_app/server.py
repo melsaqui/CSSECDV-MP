@@ -152,6 +152,7 @@ def login():
     #    return redirect('/')
 
 # Additional routes and functions as per your existing application...
+
 def get_count_admin():
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE `admin`=TRUE')
@@ -171,7 +172,7 @@ def change_role(user_id):
                 target =cursor.fetchone()
                 if target:
                     newRole = not target['admin']
-                    adminCount= get_count_admin()
+                    adminCount= get_count_admin() #we cannot allow no admins 
 
                     if target['admin']==0 or (target['admin']==1 and adminCount>1 ):
                         cursor.execute(f'UPDATE `cssecdv-mp`.accounts SET `admin` ={newRole} WHERE id={user_id}' )

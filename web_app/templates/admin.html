@@ -10,28 +10,34 @@
 {% block body %}
 <style>
     table, th, td {
-      border: 1px solid black;
-     
+        border: 1px solid black;
+        padding: 5px;
     }
 </style>
 <table>
     <tr>
         <th>User</th>
         <th>Role</th>
+        <th>Change Roles</th>
     </tr>
 
     {% for r in records %}
     <tr>
         <td> {{ r["email"] }} </td> 
         <td> {{ r["role"] }} </td>
+        
         {% if r["role"] == 'Admin' %}
-        <td>  <a href="/admin/change/{{r['id']}}">
-            <button>Downgrade Privileges</button>
-         </a></td>
-         {% elif r["role"] == 'Regular' %}
-         <td>  <a href="/admin/change/{{r['id']}}">
-            <button>Upgrade Privileges</button>
-         </a></td>
+        <td>  
+            <a href="/admin/change/{{r['id']}}">
+                <button>Downgrade</button>
+            </a>
+        </td>
+        {% elif r["role"] == 'Regular' %}
+        <td>  
+            <a href="/admin/change/{{r['id']}}">
+                <button>Upgrade</button>
+            </a>
+        </td>
         {% endif %}
 
     {% endfor %}
