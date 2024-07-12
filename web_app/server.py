@@ -151,6 +151,46 @@ def login():
     #    return redirect('/')
 
 # Additional routes and functions as per your existing application...
+@app.route('/admin/change/<user_id>')
+def change_role(user_id):
+    if session and 'loggedin' in session.keys() and session['loggedin']:
+        if user_id:
+            cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+            cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE id =%s', (session['id'], ))
+            account = cursor.fetchone()
+            if account['admin'] == 1:  
+                cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE id =%s', (user_id, ))
+                target =cursor.fetchone()
+                if target and target['admin']==0:
+                    newRole = not target['admin']
+                    cursor.execute(f'UPDATE `cssecdv-mp`.accounts SET `admin` ={newRole} WHERE id={user_id}' )
+                    mysql.connection.commit()
+                    return redirect('/admin')
+                elif target and target['admin']==1:
+                    #check how many admins 
+                    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+
+                    cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE `admin`=TRUE')
+                    adminCount= cursor.fetchall()
+                    newRole = not target['admin']
+                    if len(adminCount)>1:
+                        cursor.execute(f'UPDATE `cssecdv-mp`.accounts SET `admin` ={newRole} WHERE id={user_id}' )
+                        mysql.connection.commit()
+                        return redirect('/admin')
+                    else:
+                        #won't flash so user might be clueless why it didn't change
+                        flash("We need to have at least one admin!!")
+                        return redirect('/admin')
+                        
+                else:
+                    return redirect('/admin')
+
+            else: 
+                return redirect('/admin')  
+        else: 
+            return redirect('/admin')     
+    else:
+        return redirect('/login')
 
 @app.route('/admin')
 def admin():
@@ -162,7 +202,7 @@ def admin():
         account = cursor.fetchone()
         user = account['fname']
         if account['admin'] == 1:  
-            cursor.execute('SELECT `email`, `admin` FROM `cssecdv-mp`.accounts')
+            cursor.execute('SELECT `id`,`email`, `admin` FROM `cssecdv-mp`.accounts')
             records = cursor.fetchall()
             for i in range(len( records)):
                 records[i]['role'] = roles[records[i]['admin']]

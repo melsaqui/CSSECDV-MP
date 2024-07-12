@@ -8,6 +8,12 @@
 <h1>Admin</h1>
 <p>hello Admin {{ user }}</p>
 {% block body %}
+<style>
+    table, th, td {
+      border: 1px solid black;
+     
+    }
+</style>
 <table>
     <tr>
         <th>User</th>
@@ -17,12 +23,12 @@
     {% for r in records %}
     <tr>
         <td> {{ r["email"] }} </td> 
-        <td> {{r["role"]}} </td>
-        
+        <td> {{ r["role"] }} </td>
+        <td> <form action="/change/{{r['id']}}" method = "post"><input type="button" value = "change role"/></form></td>
     {% endfor %}
 </table>
 {% endblock %}
- 
+{{msg}}
 <p><a href ="/" class="btn">Back Home</a></p>
 <p><a href="/logout" class="btn">Logout</a></p>
 </body>
