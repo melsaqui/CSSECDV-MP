@@ -9,8 +9,6 @@ from werkzeug.utils import secure_filename
 import sys
 from datetime import timedelta
 
-
-
 app = Flask(__name__, template_folder='templates')
 app.secret_key = 'your_secret_key'
 
@@ -114,7 +112,9 @@ def login():
 
             password = request.form['pass']
             user = request.form['user']
-
+            if not re.match(r'^(([a-zA-Z0-9]+)(([-_.][a-zA-Z0-9]+)*))@(([a-zA-Z0-9-]+\.[a-zA-Z]{2,})+)$', user): #avoid sql injection
+                msg = "Invalid user input"
+                return render_template('login.html',msg=msg)
             cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
             cursor.execute('SELECT * FROM accounts WHERE email = %s', (user,))
             account = cursor.fetchone()
@@ -192,6 +192,9 @@ def register():
             phone = request.form['phone']
             salt = bcrypt.gensalt(rounds=12)
             hashed = bcrypt.hashpw(bytes(password, 'utf-8'), salt)
+            if not re.match(r'^(([a-zA-Z0-9]+)(([-_.][a-zA-Z0-9]+)*))@(([a-zA-Z0-9-]+\.[a-zA-Z]{2,})+)$',email): #avoid sql injection
+                msg = "Invalid email address!"
+                return render_template('reg.html',msg=msg)
             cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
             cursor.execute('SELECT * FROM accounts WHERE email = %s', (email,))
             account = cursor.fetchone()
