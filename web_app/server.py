@@ -8,15 +8,26 @@ import re
 from werkzeug.utils import secure_filename
 import sys
 from datetime import timedelta
+from dotenv import load_dotenv #pip install python-dotenv
+
 
 app = Flask(__name__, template_folder='templates')
 app.secret_key = 'your_secret_key'
-
+'''
 # MySQL configurations
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'Lacsapcshs2020*'
 app.config['MYSQL_DB'] = 'cssecdv-mp'
+app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
+'''
+# MAKE YOUR OWN .env file based on your SQL configurations
+load_dotenv()
+
+app.config['MYSQL_HOST'] = os.getenv("MYSQL_HOST")
+app.config['MYSQL_USER'] = os.getenv("MYSQL_USER")
+app.config['MYSQL_PASSWORD'] = os.getenv("MYSQL_PASSWORD")
+app.config['MYSQL_DB'] = os.getenv("MYSQL_DB")
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 # Initialize MySQL
@@ -225,5 +236,6 @@ def register():
         return render_template('reg.html', msg=msg)
 
 if __name__ == '__main__':
-    app.run(ssl_context='adhoc',debug=True) #pip install pyopenssl to have https
+    #app.run(ssl_context='adhoc',debug=True) #pip install pyopenssl to have https
     #refereence for self-signed SSL: https://blog.miguelgrinberg.com/post/running-your-flask-application-over-https
+    app.run(debug=True)
