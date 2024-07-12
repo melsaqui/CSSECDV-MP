@@ -154,6 +154,7 @@ def login():
 
 @app.route('/admin')
 def admin():
+    roles=["Regular","Admin"]
     if session and 'loggedin' in session.keys() and session['loggedin']:
 
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
@@ -161,7 +162,11 @@ def admin():
         account = cursor.fetchone()
         user = account['fname']
         if account['admin'] == 1:  
-            return render_template('admin.html',user=user)
+            cursor.execute('SELECT `email`, `admin` FROM `cssecdv-mp`.accounts')
+            records = cursor.fetchall()
+            for i in range(len( records)):
+                records[i]['role'] = roles[records[i]['admin']]
+            return render_template('admin.html',user=user,records=records)
         else: 
             return redirect('/')
     else:

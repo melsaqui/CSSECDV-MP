@@ -7,6 +7,22 @@
 <body>
 <h1>Admin</h1>
 <p>hello Admin {{ user }}</p>
+{% block body %}
+<table>
+    <tr>
+        <th>User</th>
+        <th>Role</th>
+    </tr>
+
+    {% for r in records %}
+    <tr>
+        <td> {{ r["email"] }} </td> 
+        <td> {{r["role"]}} </td>
+        
+    {% endfor %}
+</table>
+{% endblock %}
+ 
 <p><a href ="/" class="btn">Back Home</a></p>
 <p><a href="/logout" class="btn">Logout</a></p>
 </body>
