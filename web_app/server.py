@@ -29,7 +29,9 @@ app.config['MYSQL_HOST'] = os.getenv("MYSQL_HOST")
 app.config['MYSQL_USER'] = os.getenv("MYSQL_USER")
 app.config['MYSQL_PASSWORD'] = os.getenv("MYSQL_PASSWORD")
 app.config['MYSQL_DB'] = os.getenv("MYSQL_DB")
-app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
+app.config['MYSQL_CURSORCLASS'] = 'DictCursor' 
+
+
 
 # Initialize MySQL
 mysql = MySQL(app)
@@ -47,7 +49,7 @@ MAX_ATTEMPTS = 5
 BLOCK_DURATION = 300  # 5 minutes
 TIME_FRAME = 600  # 10 minutes
 
-app.permanent_session_lifetime = timedelta(minutes=30)
+app.permanent_session_lifetime = timedelta(minutes=30) #set lifetime session to 30 minute
 
 # Function to check if file extension is allowed
 def allowed_file(filename):
@@ -187,7 +189,7 @@ def change_role(user_id):
                         flash("We need to have at least one admin!!",category="error")
                         return redirect('/admin')
                 else:
-                    #target doesn't exist or has not valid role
+                    #target doesn't exist 
                     flash("User does not exist!!",category="error")
                     return redirect('/admin') 
             else:
