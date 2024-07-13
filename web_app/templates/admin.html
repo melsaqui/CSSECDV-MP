@@ -43,6 +43,20 @@
     {% endfor %}
 </table>
 {% endblock %}
+
+<section>
+    <header>
+      {% block header %}{% endblock header %}
+      {% for category, message in get_flashed_messages(with_categories=true) %}
+        {% if category=="error" %}
+            <div style="color:red" class="flash {{ category }}">{{ message }}</div>
+        {% else %}
+            <div style="color:green" class="flash {{ category }}">{{ message }}</div>
+        {% endif %}
+      {% endfor %}
+    </header>
+   
+  </section>
 <div class="modal-body">
 
 </div>

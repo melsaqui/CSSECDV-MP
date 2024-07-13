@@ -166,7 +166,9 @@ def change_role(user_id):
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE id =%s', (session['id'], ))
         account = cursor.fetchone()
-        if account['admin'] == 1:  
+        if account['admin'] == 1: 
+            roles=["Regular","Admin"]
+ 
             if user_id and user_id!="":
                 cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE id =%s', (user_id, ))
                 target =cursor.fetchone()
@@ -177,14 +179,16 @@ def change_role(user_id):
                     if target['admin']==0 or (target['admin']==1 and adminCount>1 ):
                         cursor.execute(f'UPDATE `cssecdv-mp`.accounts SET `admin` ={newRole} WHERE id={user_id}' )
                         mysql.connection.commit()
+                        flash(f"Successfully updated role of {target['email']} to {roles[newRole]} !", category="success")
+
                         return redirect('/admin')
                     
                     elif target['admin']==1 and adminCount<=1:
-                        #won't flash so user might be clueless why it didn't change
-                        flash("We need to have at least one admin!!")
+                        flash("We need to have at least one admin!!",category="error")
                         return redirect('/admin')
                 else:
                     #target doesn't exist or has not valid role
+                    flash("User does not exist!!",category="error")
                     return redirect('/admin') 
             else:
                 return redirect('/admin')
