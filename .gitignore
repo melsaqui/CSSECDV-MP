@@ -1,3 +1,6 @@
 
 web_app/__pycache__/server.cpython-312.pyc
 web_app/.env
+*.pyc
+web_app/__pycache__/config.cpython-312.pyc
+web_app/controllers/__pycache__/AdminControllers.cpython-312.pyc
