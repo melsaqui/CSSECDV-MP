@@ -22,4 +22,4 @@ app.register_blueprint(admin_bp,url_prefix="/admin")
 
 if __name__ == '__main__':
     app.debug = True
-    app.run()
+    app.run(ssl_context=('abc.crt','abc.key'))
