@@ -17,36 +17,42 @@
      crossorigin="anonymous">
     </script>
     </head>
-<body style ="padding: 15px;">
+<body style ="padding: 15px; text-align: center;">
 <h1>Registration Page</h1>
 <form action = '\register', method = "POST">
-    <div>
+    <div class="row justify-content-center">
         <div class="msg" style="color: red;">{{msg}}</div>
+        <table style="text-align: left; padding:10px" >
+            <tr>
+                <td style="padding-right:10px;"><label for="fname"><b>First Name</b></label></td>
+                <td style="padding-right:10px"><input type="text" style="width:300px;" placeholder="Enter First Name" name="fname" id="fname" required></td>
+                <td style="padding-right:10px"><label for="lname"><b>Last Name</b></label></td>
+                <td style="padding-right:10px"><input type="text" style="width:300px;"placeholder="Enter Last Name" name="lname" id="lname" required></td>
 
-        <hr>
-        <label for="fname"><b>First Name</b></label>
-        <input type="text" placeholder="Enter First Name" name="fname" id="fname" required>
-
-        <label for="lname"><b>Last Name</b></label>
-        <input type="text" placeholder="Enter Last Name" name="lname" id="lname" required>
-        <hr>
-
-        <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" id="email" required>
-
-        <label for="phone"><b>Phone Number</b></label>
-        <input type="text" placeholder="Enter Phone Number" name="phone" id="phone" required>
-        <hr>
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
-        <hr>
-        <label for="psw-repeat"><b>Repeat Password</b></label>
-        <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
-        <hr>
+            </tr>
+        
+            <tr>
+                <td style="padding-right:10px"><label for="email"><b>Email</b></label></td>
+                <td style="padding-right:10px"><input type="text"  style="width:300px;" placeholder="Enter Email" name="email" id="email" required></td>
+                <td style="padding-right:10px"><label for="phone"><b>Phone Number</b></label></td>
+                <td style="padding-right:10px"><input type="text"  style="width:300px;"placeholder="Enter Phone Number" name="phone" id="phone" required></td>
+            </tr>
+            <tr>
+                <td style="padding-right:10px"><label for="psw"><b>Password</b></label></td>
+                <td style="padding-right:10px"><input type="password" style="width:300px;" placeholder="Enter Password" name="psw" id="psw" required></td>
+            </tr>
+            <tr>
+                <td style="padding-right:10px"><label for="psw-repeat"><b>Repeat Password</b></label></td>
+                <td style="padding-right:10px"><input type="password"  style="width:300px;" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required></td>
+            </tr>
+        
+            <tr>
         <!--label for="img"><b>Profile picture</b></label>
         <input type="file" id="img" name="img" required-->
-        <hr>
-        <button type="submit" class="btn btn-primary registerbtn">Register</button>
+        
+                <td style="padding-top:10px; text-align: center;" colspan="4"><button style="width: 600px" type="submit" class="btn btn-primary registerbtn">Register</button></td>
+            </tr>
+        </table>
 
     
     </div>

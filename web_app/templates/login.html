@@ -18,24 +18,25 @@
          crossorigin="anonymous">
         </script>
     </head>
-<body style ="padding: 15px;">
+<body style ="padding: 15px; text-align: center;">
 <h1>Login Page</h1>
 <form action = '/login', method = "POST">
-    <div>
+    <div class="row justify-content-center">
         <div class="msg" style="color: red;">{{msg}}</div>
+        <table  style="text-align: left;">
+            <tr>
+                <td style="padding-right:10px; padding-top: 20px;"><label for="user"><b>Email</b></label></td>
+                <td style="padding-right:10px"><input style="width:300px;" type="text" placeholder="Enter Email" name="user" id="user" required></td>
+            </tr>
+            <tr>
+                <td style="padding-right:10px"><label for="pass"><b>Password</b></label></td>
+                <td style="padding-right:10px"><input style="width:300px;" type="password" placeholder="Enter Password" name="pass" id="pass" required></td>
+            </tr>
+            <tr>
 
-        <hr>
-        <label for="user"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="user" id="user" required>
-
-        <hr>
-        <label for="pass"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="pass" id="pass" required>
-        <hr>
-
-        <button type="submit" class="btn btn-primary loginbtn" role="button">Login</button>
-
-    
+                <td style="padding-top:10px; text-align: center;" colspan="4"><button style="width: 400px" type="submit" class="btn btn-primary loginbtn" role="button">Login</button></td>
+            </tr>
+        </table>
     </div>
 </form>
 <div class="container-register">

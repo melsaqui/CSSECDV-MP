@@ -20,7 +20,6 @@ def profile():
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE email = %s and id = %s', (session['email'], session['id'],))
         account = cursor.fetchone()
-
         
         return render_template('profile.html',admin=account['admin'],info=account)
     else:
