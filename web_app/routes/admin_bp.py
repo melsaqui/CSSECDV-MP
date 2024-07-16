@@ -1,6 +1,6 @@
 from flask import Blueprint
 
-from controllers.AdminControllers import admin, change_role,edit
+from controllers.AdminControllers import admin, change_role, edit
 
 admin_bp = Blueprint('admin_bp', __name__)
 admin_bp.route('/')(admin)

@@ -37,8 +37,8 @@
 <table>
     <tr>
         <th style="width: 300px">Users</th>
-        <th style="width: 100px">Roles</th>
-        <th style="width: 100px">Change Roles</th>
+        <th style="width: 100px; text-align: center;">Roles</th>
+        <th style="width: 100px; text-align: center;">Change Roles</th>
     </tr>
 
     {% for r in records %}
@@ -61,7 +61,7 @@
         </td>
         <td style = "text-align: center;">  
                 {% if r["role"] == 'Regular' %}
-                <button style="width: 90px;" type="button" data-toggle="modal" class="btn-outline-info btn-sm" data-target ="#update_profile_{{r['id']}}">Edit</button>
+                <button style="width: 90px;" type="button" data-toggle="modal" class="btn btn-outline-info btn-sm" data-target ="#update_profile_{{r['id']}}">Edit</button>
                 {% endif %}
         </td>
        <!--modal for role change-->
@@ -83,6 +83,13 @@
                                     style='font-weight:bold'>{{r['email']}}</span>
                                     's role?</label>
     
+                        </div>
+                        <div>
+                            <label for="admin-pass" style='font-weight:bold; padding: 5px' class="col-xs-5 control-label" >Your Password</label>
+                            <div class="col-xs-10">
+                                <input type="password" class="form-control" name="admin-pass"
+                                    value="" required/>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">

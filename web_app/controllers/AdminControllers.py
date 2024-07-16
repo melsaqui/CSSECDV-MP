@@ -10,6 +10,7 @@ import sys
 from datetime import timedelta
 #from flask_bootstrap import Bootstrap4
 #bootstrap = Bootstrap4()
+import pandas as pd
 
 
 mysql = MySQL()
@@ -27,7 +28,10 @@ def admin():
             records = cursor.fetchall()
             for i in range(len( records)):
                 records[i]['role'] = roles[records[i]['admin']]
-            return render_template('admin.html',user=user,records=records)
+            df = pd.DataFrame(records)
+            df_sort = df.sort_values(by='email')
+            sorted_data = df_sort.to_dict(orient='records') # so its not sorted by id less easy to guess user IDs
+            return render_template('admin.html',user=user,records= sorted_data)
         else: 
             return redirect('/')
     else:
@@ -44,31 +48,37 @@ def change_role(user_id,user_email):
         account = cursor.fetchone()
         if account['admin'] == 1: 
             roles=["Regular","Admin"]
- 
-            if user_id and user_id!="":
-                cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE id =%s AND email=%s', (user_id,user_email ))
-                target =cursor.fetchone()
-                if target:
-                    newRole = not target['admin']
-                    adminCount= get_count_admin() #we cannot allow no admins 
+            if request.method == 'POST' and 'admin-pass' in request.form:
+                adminpass = request.form['admin-pass']
+                if not bcrypt.checkpw(adminpass.encode('utf-8'), account['password']):
+                    flash("Invalid Password",category="error")
+                    return redirect('/admin')
+                if user_id and user_id!="":
+                    cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE id =%s AND email=%s', (user_id,user_email ))
+                    target =cursor.fetchone()
+                    if target:
+                        newRole = not target['admin']
+                        adminCount= get_count_admin() #we cannot allow no admins 
 
-                    if target['admin']==0 or (target['admin']==1 and adminCount>1 ):
-                        cursor.execute(f'UPDATE `cssecdv-mp`.accounts SET `admin` ={newRole} WHERE id={user_id}' )
-                        mysql.connection.commit()
-                        flash(f"Successfully updated role of {target['email']} to {roles[newRole]} !", category="success")
+                        if target['admin']==0 or (target['admin']==1 and adminCount>1 ):
+                            cursor.execute(f'UPDATE `cssecdv-mp`.accounts SET `admin` ={newRole} WHERE id={user_id}' )
+                            mysql.connection.commit()
+                            flash(f"Successfully updated role of {target['email']} to {roles[newRole]} !", category="success")
 
-                        return redirect('/admin')
+                            return redirect('/admin')
                     
-                    elif target['admin']==1 and adminCount<=1:
-                        flash("We need to have at least one admin!!",category="error")
+                        elif target['admin']==1 and adminCount<=1:
+                            flash("We need to have at least one admin!!",category="error")
                         return redirect('/admin')
+                    else:
+                        #target doesn't exist 
+                        flash("User does not exist!!",category="error")
+                        return redirect('/admin') 
                 else:
-                    #target doesn't exist 
-                    flash("User does not exist!!",category="error")
-                    return redirect('/admin') 
-            else:
+                    return redirect('/admin')
+            else: 
+                flash("Enter your password", category="error")
                 return redirect('/admin')
-       
         else: 
             #not admin
             return redirect('/')     
@@ -94,7 +104,7 @@ def edit(target_id,target_email):
                 adminpass = request.form['admin-pass']
                 cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE id =%s and email=%s', (target_id, target_email))
                 target =cursor.fetchone()
-                if target['admin']==0: # cannot edit other admins
+                if target['admin']==0 or (target['id']==session['id'] and target['email']==session['email']): # cannot edit other admins except own
                     if account['admin'] and bcrypt.checkpw(adminpass.encode('utf-8'), account['password']):
                         
                         if not re.match(r'[A-Za-z]+', fname):
