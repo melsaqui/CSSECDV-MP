@@ -38,9 +38,9 @@
     <tr>
         <th style="width: 300px">Users</th>
         <th style="width: 100px; text-align: center;">Roles</th>
-        <th style="width: 100px; text-align: center;">Change Roles</th>
-        <th style="width: 100px; text-align: center;">Edit User Profile</th>
-        <th style="width: 100px; text-align: center;">Reset User Password</th>
+        <th colspan=3 style="text-align: center;">Modify Users' Account</th>
+        <!--th style="width: 100px; text-align: center;">Edit User Profile</th-->
+        <!--th style="width: 100px; text-align: center;">Reset User Password</th-->
 
     </tr>
 
@@ -54,17 +54,17 @@
             <!--a href="/admin/change-role/{{r['id']}}"-->
                 {% if r["role"] == 'Admin' %}
                 <!--button style="width: 90px;">Downgrade</button-->
-                <button style="width: 100px;" type="button" data-toggle="modal" class="btn btn-outline-danger btn-sm" data-target="#role_change_{{r['id']}}">Downgrade</button>
+                <button style="width: 100px;" type="button" data-toggle="modal" class="btn btn-outline-danger btn-sm" data-target="#role_change_{{r['id']}}">Downgrade Role</button>
 
                 {% elif r["role"] == 'Regular' %}
-                <button style="width: 100px" type="button" data-toggle="modal" class="btn btn-outline-success btn-sm" data-target="#role_change_{{r['id']}}">Upgrade</button>
+                <button style="width: 100px" type="button" data-toggle="modal" class="btn btn-outline-success btn-sm" data-target="#role_change_{{r['id']}}">Upgrade Role</button>
                 {% endif %}
  
             <!--/a-->
         </td>
         <td style = "text-align: center;">  
                 {% if r["role"] == 'Regular' %}
-                <button style="width: 90px;" type="button" data-toggle="modal" class="btn btn-outline-info btn-sm" data-target ="#update_profile_{{r['id']}}">Edit</button>
+                <button style="width: 90px;" type="button" data-toggle="modal" class="btn btn-outline-info btn-sm" data-target ="#update_profile_{{r['id']}}">Edit Profie Details</button>
                 {% endif %}
         </td>
         <td style = "text-align: center;">  
