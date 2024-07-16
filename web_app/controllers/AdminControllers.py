@@ -12,6 +12,7 @@ from datetime import timedelta
 #from flask_bootstrap import Bootstrap4
 #bootstrap = Bootstrap4()
 import pandas as pd
+from .ProfileControllers import valid_feb
 
 # Constants for brute force protection
 MAX_ATTEMPTS = 5
@@ -132,7 +133,7 @@ def edit(target_id,target_email):
             if not str(target_id).isnumeric():
                 flash("Invalid id",category='error')
                 return redirect('/admin')
-            if target_id!=None and request.method == 'POST' and 'admin-pass' in request.form and 'fname' in request.form and 'lname' in request.form and 'phone' in request.form:
+            if target_id!=None and request.method == 'POST' and 'admin-pass' in request.form and 'fname' in request.form and 'lname' in request.form and 'phone' in request.form and 'bday' in request.form:
                 if not limit_attempts():
                     flash('Too many attempts. Please try again later...',category='error')
                     return redirect("/admin")   
@@ -140,6 +141,7 @@ def edit(target_id,target_email):
                 lname=request.form['lname']       
                 phone= request.form['phone'] 
                 adminpass = request.form['admin-pass']
+                bday =request.form['bday']
                 cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE id =%s and email=%s', (target_id, target_email))
                 target =cursor.fetchone()
                 if target['admin']==0: # cannot edit other admins 
@@ -151,8 +153,12 @@ def edit(target_id,target_email):
                             flash('Error Editing: Invalid Name!',category='error')
                         elif not re.match(r'^09\d{9}', phone) and not re.match(r'^[+]{1}(?:[0-9\-\(\)\/\.]\s?){6,15}[0-9]{1}$', phone):
                             flash('Error Editing: Invalid Phone number!',category='error')
+                        elif not re.match(r'^((19|20)\d{2})-((1[0-2])|(0[1-9]))-(([0-2]\d)|(3[0-1]))$',bday):
+                            flash(f"Invalid birthday {bday}",category ='error')
+                        elif not valid_feb(bday):
+                            flash(f"Invalid birthday {bday}",category ='error') 
                         else:
-                            cursor.execute("UPDATE `cssecdv-mp`.accounts SET `fname` =%s, `lname`=%s, `phone` =%s WHERE id=%s and email=%s",(fname,lname,phone,target_id, target_email))
+                            cursor.execute("UPDATE `cssecdv-mp`.accounts SET `fname` =%s, `lname`=%s, `phone` =%s, `birthday`=%s WHERE id=%s and email=%s",(fname,lname,phone,bday, target_id, target_email))
                             mysql.connection.commit()
                             flash('Successfully edited!',category='success')   
                         return redirect('/admin')     
