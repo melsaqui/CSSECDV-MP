@@ -39,6 +39,9 @@
         <th style="width: 300px">Users</th>
         <th style="width: 100px; text-align: center;">Roles</th>
         <th style="width: 100px; text-align: center;">Change Roles</th>
+        <th style="width: 100px; text-align: center;">Edit User Profile</th>
+        <th style="width: 100px; text-align: center;">Reset User Password</th>
+
     </tr>
 
     {% for r in records %}
@@ -64,6 +67,11 @@
                 <button style="width: 90px;" type="button" data-toggle="modal" class="btn btn-outline-info btn-sm" data-target ="#update_profile_{{r['id']}}">Edit</button>
                 {% endif %}
         </td>
+        <td style = "text-align: center;">  
+            {% if r["role"] == 'Regular' %}
+            <button style="width: 90px;" type="button" data-toggle="modal" class="btn btn-outline-dark btn-sm" data-target ="#reset_{{r['id']}}_pass">Reset Password</button>
+            {% endif %}
+    </td>
        <!--modal for role change-->
         <div class="modal fade" id="role_change_{{ r['id'] }}"role="dialog">
             <div class="modal-dialog">
@@ -82,10 +90,9 @@
                                 <span
                                     style='font-weight:bold'>{{r['email']}}</span>
                                     's role?</label>
-    
                         </div>
                         <div>
-                            <label for="admin-pass" style='font-weight:bold; padding: 5px' class="col-xs-5 control-label" >Your Password</label>
+                            <label for="admin-pass" style='font-weight:bold; padding: 5px' class="col-xs-5 control-label" >Confirm With Your Password</label>
                             <div class="col-xs-10">
                                 <input type="password" class="form-control" name="admin-pass"
                                     value="" required/>
@@ -156,8 +163,58 @@
             </form>
         </div>
     </div>
-</div>
+    </div>
     <!---->
+    <!--Modal for reset password-->  
+    <div class="modal fade" id="reset_{{r['id']}}_pass" role="dialog" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    
+                    <h4 class="modal-title" id="myModalLabel">Reset a User Password</h4>
+                    <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">&times;</button>
+                </div>
+                <form action="/admin/{{r['id']}}/reset-pass/{{r['email']}}" method="POST">
+                    <div class="modal-body"  style="padding: 30px">
+                        <div class="form-group row">
+                            <label class="col-sm-12 col-form-label">You are changing
+                                <span
+                                    style='font-weight:bold'>{{r['email']}}</span>
+                                    's password</label>
+                        </div>
+                        <div class="form-group row">
+                            <label for="nPass" style='padding: 5px' class="col-xs-5 control-label">New Password</label>
+                            <div class="col-xs-10">
+                                <input type="password" id="nPass" class="form-control" name="nPass"
+                                    value="" required/>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="conf_pass" style='padding: 5px' class="col-xs-5 control-label">Confirm Password</label>
+                            <div class="col-xs-10">
+                                <input type="password" class="form-control" name="conf_pass"
+                                    value="" required/>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <label for="admin-pass" style='font-weight:bold; padding: 5px' class="col-xs-5 control-label" >Your Password</label>
+                            <div class="col-xs-10">
+                                <input type="password" class="form-control" name="admin-pass"
+                                    value="" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default"
+                            data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
     {% endfor %}
 </table>
 

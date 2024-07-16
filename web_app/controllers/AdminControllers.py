@@ -104,7 +104,7 @@ def edit(target_id,target_email):
                 adminpass = request.form['admin-pass']
                 cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE id =%s and email=%s', (target_id, target_email))
                 target =cursor.fetchone()
-                if target['admin']==0 or (target['id']==session['id'] and target['email']==session['email']): # cannot edit other admins except own
+                if target['admin']==0: # cannot edit other admins 
                     if account['admin'] and bcrypt.checkpw(adminpass.encode('utf-8'), account['password']):
                         
                         if not re.match(r'[A-Za-z]+', fname):
@@ -136,5 +136,48 @@ def edit(target_id,target_email):
     else:    
         #not loggedin       
         return redirect("/login")
+def reset_pass(target_id, target_email):
+    if session and 'loggedin' in session.keys() and session['loggedin']:
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE id =%s and email=%s', (session['id'], session['email']))
+        account = cursor.fetchone()
+        if account['admin'] == 1: 
+            if not re.match(r'^(([a-zA-Z0-9]+)(([-_.][a-zA-Z0-9]+)*))@(([a-zA-Z0-9-]+\.[a-zA-Z]{2,})+)$',target_email): #avoid sql injection
+                flash("Invalid email address!",category='error')
+                return redirect('/admin')
+            if not str(target_id).isnumeric():
+                flash("Invalid id",category='error')
+                return redirect('/admin')
+            if target_id!=None and target_email!=None and request.method == 'POST' and 'admin-pass' in request.form and 'nPass' in request.form and 'conf_pass' in request.form:   
+                pas = request.form['nPass']
+                conf_pass= request.form['conf_pass']
+                adminpass = request.form['admin-pass']
+                salt = bcrypt.gensalt(rounds=12)
+                hashed = bcrypt.hashpw(bytes(pas, 'utf-8'), salt)
+                if account['admin'] and bcrypt.checkpw(adminpass.encode('utf-8'), account['password']):
+
+                    cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE id =%s and email=%s', (target_id, target_email))
+                    target=cursor.fetchone()
+                    if target['admin']==0: # cannot edit other admins 
+                        if len(pas)<8:
+                            flash("Password should be at least 8 characters!","error")
+                        elif pas!=conf_pass:
+                            flash("Passwords Not Matching!","error")
+                        else:
+                            cursor.execute("UPDATE `cssecdv-mp`.accounts SET `password` = %s WHERE id=%s and email=%s",(hashed,target_id, target_email))
+                            mysql.connection.commit()
+                            flash(f'Successfully Reset, don\t forget to notify {target_email} of new password!',category='success')     
+                        return redirect('/admin')
+                    else:
+                        flash("You cannot change another admin's password!!", category="error")
+                        return redirect('/admin')
+
+                else:
+                    flash("Invalid Password", category="error")
+                    return redirect('/admin')
+        else:
+            return redirect('/')
+    else:
+        return redirect('/login')
 
         
