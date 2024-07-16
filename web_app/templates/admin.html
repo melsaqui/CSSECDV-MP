@@ -225,9 +225,9 @@
       {% block header %}{% endblock header %}
       {% for category, message in get_flashed_messages(with_categories=true) %}
         {% if category=="error" %}
-            <div style="color:red" class="flash {{ category }}">{{ message }}</div>
+            <div style="color:red; font-size: 20px;" class="flash {{ category }}">{{ message }}</div>
         {% else %}
-            <div style="color:green" class="flash {{ category }}">{{ message }}</div>
+            <div style="color:green;  font-size: 20px;" class="flash {{ category }}">{{ message }}</div>
         {% endif %}
         
       {% endfor %}

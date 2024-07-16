@@ -51,7 +51,7 @@ def change_role(user_id,user_email):
             if request.method == 'POST' and 'admin-pass' in request.form:
                 adminpass = request.form['admin-pass']
                 if not bcrypt.checkpw(adminpass.encode('utf-8'), account['password']):
-                    flash("Invalid Password",category="error")
+                    flash("Error: Invalid Password",category="error")
                     return redirect('/admin')
                 if user_id and user_id!="":
                     cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE id =%s AND email=%s', (user_id,user_email ))
@@ -68,16 +68,16 @@ def change_role(user_id,user_email):
                             return redirect('/admin')
                     
                         elif target['admin']==1 and adminCount<=1:
-                            flash("We need to have at least one admin!!",category="error")
+                            flash("Error: We need to have at least one admin!!",category="error")
                         return redirect('/admin')
                     else:
                         #target doesn't exist 
-                        flash("User does not exist!!",category="error")
+                        flash("Error: User does not exist!!",category="error")
                         return redirect('/admin') 
                 else:
                     return redirect('/admin')
             else: 
-                flash("Enter your password", category="error")
+                flash("Error: Enter your password", category="error")
                 return redirect('/admin')
         else: 
             #not admin
@@ -120,7 +120,7 @@ def edit(target_id,target_email):
                         return redirect('/admin')     
                     else:
                         #wrong password
-                        flash("Error Editing: Wrong Password Admin", category='error')   
+                        flash("Error Editing: Incorrect Password, Admin", category='error')   
                         return redirect('/admin')             
                 else:
                     #target cannot be admin
@@ -169,11 +169,11 @@ def reset_pass(target_id, target_email):
                             flash(f'Successfully Reset, don\t forget to notify {target_email} of new password!',category='success')     
                         return redirect('/admin')
                     else:
-                        flash("You cannot change another admin's password!!", category="error")
+                        flash("Error: You cannot change another admin's password!!", category="error")
                         return redirect('/admin')
 
                 else:
-                    flash("Invalid Password", category="error")
+                    flash("Error: Incorrect Password", category="error")
                     return redirect('/admin')
         else:
             return redirect('/')
