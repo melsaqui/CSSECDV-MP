@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, redirect, session, flash, url
 from flask_migrate import Migrate
 from routes.auth_bp import auth_bp
 from routes.admin_bp import admin_bp
+from flask_bootstrap import Bootstrap4
+bootstrap = Bootstrap4()
 
 import os
 from dotenv import load_dotenv
@@ -12,6 +14,7 @@ from flask_mysqldb import MySQL
 mysql = MySQL(app)
 
 app.config.from_object('config')
+bootstrap.init_app(app)
 
 #db.init_app(app)
 #migrate = Migrate(app, db)
