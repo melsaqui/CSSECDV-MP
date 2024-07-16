@@ -8,13 +8,40 @@ import re
 from werkzeug.utils import secure_filename
 import sys
 from datetime import timedelta
+#from AuthControllers import
 #from flask_bootstrap import Bootstrap4
 #bootstrap = Bootstrap4()
 import pandas as pd
 
+# Constants for brute force protection
+MAX_ATTEMPTS = 5
+BLOCK_DURATION = 300  # 5 minutes
+TIME_FRAME = 600  # 10 minutes
+blocked_actions =0
+admin_actions=3
+pass_attempts = {}
 
 mysql = MySQL()
+def limit_attempts():
+    client_ip = request.remote_addr
+    current_time = time.time()
 
+    if client_ip in pass_attempts:
+        attempts, first_attempt_time = pass_attempts[client_ip]
+
+        if attempts >= MAX_ATTEMPTS:
+            if current_time - first_attempt_time < BLOCK_DURATION:
+                return False
+            else:
+                # Reset attempts after block duration
+                pass_attempts[client_ip] = [0, current_time]
+        elif current_time - first_attempt_time > TIME_FRAME:
+            # Reset attempts after the time frame
+            pass_attempts[client_ip] = [0, current_time]
+    else:
+        pass_attempts[client_ip] = [0, current_time]
+
+    return True
 def admin():
     roles=["Regular","Admin"]
     if session and 'loggedin' in session.keys() and session['loggedin']:
@@ -49,9 +76,17 @@ def change_role(user_id,user_email):
         if account['admin'] == 1: 
             roles=["Regular","Admin"]
             if request.method == 'POST' and 'admin-pass' in request.form:
+                if not limit_attempts():
+                    flash('Too many attempts. Please try again later...',category='error')
+                    return redirect("/admin")
                 adminpass = request.form['admin-pass']
                 if not bcrypt.checkpw(adminpass.encode('utf-8'), account['password']):
                     flash("Error: Invalid Password",category="error")
+                    client_ip = request.remote_addr
+                    if client_ip in pass_attempts:
+                        pass_attempts[client_ip][0] += 1
+                    else:
+                        pass_attempts[client_ip] = [1, time.time()]
                     return redirect('/admin')
                 if user_id and user_id!="":
                     cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE id =%s AND email=%s', (user_id,user_email ))
@@ -97,7 +132,10 @@ def edit(target_id,target_email):
             if not str(target_id).isnumeric():
                 flash("Invalid id",category='error')
                 return redirect('/admin')
-            if target_id!=None and request.method == 'POST' and 'admin-pass' in request.form and 'fname' in request.form and 'lname' in request.form and 'phone' in request.form:   
+            if target_id!=None and request.method == 'POST' and 'admin-pass' in request.form and 'fname' in request.form and 'lname' in request.form and 'phone' in request.form:
+                if not limit_attempts():
+                    flash('Too many attempts. Please try again later...',category='error')
+                    return redirect("/admin")   
                 fname=request.form['fname']    
                 lname=request.form['lname']       
                 phone= request.form['phone'] 
@@ -120,8 +158,13 @@ def edit(target_id,target_email):
                         return redirect('/admin')     
                     else:
                         #wrong password
-                        flash("Error Editing: Incorrect Password, Admin", category='error')   
-                        return redirect('/admin')             
+                        flash("Error Editing: Incorrect Password, Admin", category='error')  
+                        client_ip = request.remote_addr
+                        if client_ip in pass_attempts:
+                            pass_attempts[client_ip][0] += 1
+                        else:
+                            pass_attempts[client_ip] = [1, time.time()]
+                        return redirect('/admin') 
                 else:
                     #target cannot be admin
                     flash ("Error Editing: You cannot edit a the profile of a fellow admin")  
@@ -149,6 +192,9 @@ def reset_pass(target_id, target_email):
                 flash("Invalid id",category='error')
                 return redirect('/admin')
             if target_id!=None and target_email!=None and request.method == 'POST' and 'admin-pass' in request.form and 'nPass' in request.form and 'conf_pass' in request.form:   
+                if not limit_attempts():
+                    flash('Too many attempts. Please try again later...',category='error')
+                    return redirect("/admin")   
                 pas = request.form['nPass']
                 conf_pass= request.form['conf_pass']
                 adminpass = request.form['admin-pass']
@@ -174,6 +220,11 @@ def reset_pass(target_id, target_email):
 
                 else:
                     flash("Error: Incorrect Password", category="error")
+                    client_ip = request.remote_addr
+                    if client_ip in pass_attempts:
+                        pass_attempts[client_ip][0] += 1
+                    else:
+                        pass_attempts[client_ip] = [1, time.time()]
                     return redirect('/admin')
         else:
             return redirect('/')
