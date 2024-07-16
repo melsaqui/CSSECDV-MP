@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS `accounts`(
 `password` VARBINARY(1024) NOT NULL,
 `admin` BOOLEAN NOT NULL default FALSE,
 `profile_pic` VARCHAR (50),
+`birthday` DATE NULL,
 PRIMARY KEY(`id`)
 
 );

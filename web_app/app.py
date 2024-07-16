@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, redirect, session, flash, url
 from flask_migrate import Migrate
 from routes.auth_bp import auth_bp
 from routes.admin_bp import admin_bp
+from routes.user_bp import user_bp
+
 from flask_bootstrap import Bootstrap4
 bootstrap = Bootstrap4()
 
@@ -21,6 +23,7 @@ bootstrap.init_app(app)
 
 app.register_blueprint(auth_bp)
 app.register_blueprint(admin_bp,url_prefix="/admin")
+app.register_blueprint(user_bp,url_prefix="/user")
 
 
 if __name__ == '__main__':

@@ -20,7 +20,7 @@
 </head>
 <body style ="padding: 15px;">
     <h1>Home</h1>
-    <p>Hello {{ user }}</p>
+    <p>Hello <a href = '/user'>{{ user }}</a></p>
     {% if admin %}
         <a href ="/admin" role="button" class="btn-lg btn-dark active">Admin Panel</a>
     {% endif %}

@@ -66,7 +66,7 @@ def register():
             elif not email or not password or not phone or not reppass or not fname or not lname:
                 msg = 'Please fill out the form!'
             else:
-                cursor.execute('INSERT INTO accounts VALUES (NULL, %s, %s, %s, %s, %s, False,NULL)', (fname, lname, email, phone, hashed))
+                cursor.execute('INSERT INTO accounts VALUES (NULL, %s, %s, %s, %s, %s, False,NULL,NULL)', (fname, lname, email, phone, hashed))
                 mysql.connection.commit()
                 msg = 'You have successfully registered!'
 
