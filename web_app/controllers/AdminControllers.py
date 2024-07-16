@@ -107,11 +107,11 @@ def edit(target_id,target_email):
                 if target['admin']==0: # cannot edit other admins 
                     if account['admin'] and bcrypt.checkpw(adminpass.encode('utf-8'), account['password']):
                         
-                        if not re.match(r'[A-Za-z]+', fname):
+                        if not re.match(r'^([A-Za-z]\s*)+$', fname):
                             flash('Error Editing: Invalid Name!',category='error')
-                        elif not re.match(r'[A-Za-z]+', lname):
+                        elif not re.match(r'^([A-Za-z]\s*)+$', lname):
                             flash('Error Editing: Invalid Name!',category='error')
-                        elif not re.match(r'^09\d{9}$', phone) and not re.match(r'^[+]{1}(?:[0-9\-\(\)\/\.]\s?){6,15}[0-9]{1}$', phone):
+                        elif not re.match(r'^09\d{9}', phone) and not re.match(r'^[+]{1}(?:[0-9\-\(\)\/\.]\s?){6,15}[0-9]{1}$', phone):
                             flash('Error Editing: Invalid Phone number!',category='error')
                         else:
                             cursor.execute("UPDATE `cssecdv-mp`.accounts SET `fname` =%s, `lname`=%s, `phone` =%s WHERE id=%s and email=%s",(fname,lname,phone,target_id, target_email))

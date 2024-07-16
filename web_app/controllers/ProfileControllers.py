@@ -52,9 +52,9 @@ def edit():
             if email!=session['email']:
                 flash("You can only edit you profile. If you are an admin go to admin panel", category ="error")
                 return redirect('/user')
-            elif not re.match(r'[A-Za-z]+', fname):
+            elif not re.match(r'^([A-Za-z]\s*)+$', fname):
                 flash('Invalid Name!',category ='error')
-            elif not re.match(r'[A-Za-z]+', lname):
+            elif not re.match(r'^([A-Za-z]\s*)+$', lname):
                 flash('Invalid Name!',category ='error')
             elif not re.match(r'^09\d{9}$', phone) and not re.match(r'^[+]{1}(?:[0-9\-\(\)\/\.]\s?){6,15}[0-9]{1}$', phone):
                 flash("Invalid phone number",category ='error')

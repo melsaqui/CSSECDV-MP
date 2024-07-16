@@ -53,9 +53,9 @@ def register():
                 msg = 'Account already exists!'
             elif not re.match(r'^(([a-zA-Z0-9]+)(([-_.][a-zA-Z0-9]+)*))@(([a-zA-Z0-9-]+\.[a-zA-Z]{2,})+)$', email):
                 msg = 'Invalid email address!'
-            elif not re.match(r'[A-Za-z]+', fname):
+            elif not re.match(r'^([A-Za-z]\s*)+$', fname):
                 msg = 'Invalid Name!'
-            elif not re.match(r'[A-Za-z]+', lname):
+            elif not re.match(r'^([A-Za-z]\s*)+$', lname):
                 msg = 'Invalid Name!'
             elif not re.match(r'^09\d{9}$', phone) and not re.match(r'^[+]{1}(?:[0-9\-\(\)\/\.]\s?){6,15}[0-9]{1}$', phone):
                 msg = "Invalid phone number"
