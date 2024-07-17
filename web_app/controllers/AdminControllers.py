@@ -11,7 +11,7 @@ from datetime import timedelta
 #from flask_bootstrap import Bootstrap4
 #bootstrap = Bootstrap4()
 import pandas as pd
-from .ProfileControllers import valid_feb
+from .ProfileControllers import valid_date
 
 # Constants for brute force protection
 MAX_ATTEMPTS = 5
@@ -68,6 +68,7 @@ def get_count_admin():
     cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE `admin`=TRUE')
     count = len(cursor.fetchall())
     return count
+
 def change_role(user_id,user_email):
     if session and 'loggedin' in session.keys() and session['loggedin']:
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
@@ -120,6 +121,7 @@ def change_role(user_id,user_email):
     else:
         #not loggedin
         return redirect('/login')
+    
 def edit(target_id,target_email):
     if session and 'loggedin' in session.keys() and session['loggedin']:
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
@@ -154,7 +156,7 @@ def edit(target_id,target_email):
                             flash('Error Editing: Invalid Phone number!',category='error')
                         elif not re.match(r'^((19|20)\d{2})-((1[0-2])|(0[1-9]))-(([0-2]\d)|(3[0-1]))$',bday):
                             flash(f"Invalid birthday {bday}",category ='error')
-                        elif not valid_feb(bday):
+                        elif not valid_date(bday):
                             flash(f"Invalid birthday {bday}",category ='error') 
                         else:
                             cursor.execute("UPDATE `cssecdv-mp`.accounts SET `fname` =%s, `lname`=%s, `phone` =%s, `birthday`=%s WHERE id=%s and email=%s",(fname,lname,phone,bday, target_id, target_email))

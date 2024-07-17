@@ -24,10 +24,11 @@ def profile():
         return render_template('profile.html',admin=account['admin'],info=account)
     else:
         return redirect('/login')
-def valid_feb(date): #valid considering february
+def valid_date(date): #valid considering february
     date_split = str(date).split('-')
     print(date_split)
     #year-mm-dd
+    thirty_one = [1,3,5,7,8,10,12]
     if int(date_split[1])==2: #if february
         
         if int(date_split[2])<=28: #if date <=28 valid no matter what
@@ -36,9 +37,12 @@ def valid_feb(date): #valid considering february
             return True
         else:
             return False          
-    else: #month is not feb
+    elif int ((date_split[1]) in thirty_one) and int(date_split[2])<=31:
         return True
-    #return False
+    elif not(int(date_split[1]) in thirty_one) and int(date_split[2])<=30:
+        return True
+    else: 
+        return False
     
 def edit():
     if session and 'loggedin' in session.keys() and session['loggedin']:
@@ -59,7 +63,7 @@ def edit():
                 flash("Invalid phone number",category ='error')
             elif not re.match(r'^((19|20)\d{2})-((1[0-2])|(0[1-9]))-(([0-2]\d)|(3[0-1]))$',bday):
                 flash(f"Invalid birthday {bday}",category ='error')
-            elif not valid_feb(bday):
+            elif not valid_date(bday):
                flash(f"Invalid birthday {bday}",category ='error')               
             else:
                 cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
