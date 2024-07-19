@@ -9,6 +9,7 @@ from werkzeug.utils import secure_filename
 import sys
 from datetime import timedelta
 from dotenv import load_dotenv #pip install python-dotenv
+#from flask_modals import response
 
 
 app = Flask(__name__, template_folder='templates')
@@ -28,7 +29,9 @@ app.config['MYSQL_HOST'] = os.getenv("MYSQL_HOST")
 app.config['MYSQL_USER'] = os.getenv("MYSQL_USER")
 app.config['MYSQL_PASSWORD'] = os.getenv("MYSQL_PASSWORD")
 app.config['MYSQL_DB'] = os.getenv("MYSQL_DB")
-app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
+app.config['MYSQL_CURSORCLASS'] = 'DictCursor' 
+
+
 
 # Initialize MySQL
 mysql = MySQL(app)
@@ -46,7 +49,7 @@ MAX_ATTEMPTS = 5
 BLOCK_DURATION = 300  # 5 minutes
 TIME_FRAME = 600  # 10 minutes
 
-app.permanent_session_lifetime = timedelta(minutes=30)
+app.permanent_session_lifetime = timedelta(minutes=30) #set lifetime session to 30 minute
 
 # Function to check if file extension is allowed
 def allowed_file(filename):
@@ -152,8 +155,56 @@ def login():
 
 # Additional routes and functions as per your existing application...
 
+def get_count_admin():
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE `admin`=TRUE')
+    count = len(cursor.fetchall())
+    return count
+
+    
+@app.route('/admin/change/<int:user_id>', methods=['GET', 'POST'])
+def change_role(user_id):
+    if session and 'loggedin' in session.keys() and session['loggedin']:
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE id =%s', (session['id'], ))
+        account = cursor.fetchone()
+        if account['admin'] == 1: 
+            roles=["Regular","Admin"]
+ 
+            if user_id and user_id!="":
+                cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE id =%s', (user_id, ))
+                target =cursor.fetchone()
+                if target:
+                    newRole = not target['admin']
+                    adminCount= get_count_admin() #we cannot allow no admins 
+
+                    if target['admin']==0 or (target['admin']==1 and adminCount>1 ):
+                        cursor.execute(f'UPDATE `cssecdv-mp`.accounts SET `admin` ={newRole} WHERE id={user_id}' )
+                        mysql.connection.commit()
+                        flash(f"Successfully updated role of {target['email']} to {roles[newRole]} !", category="success")
+
+                        return redirect('/admin')
+                    
+                    elif target['admin']==1 and adminCount<=1:
+                        flash("We need to have at least one admin!!",category="error")
+                        return redirect('/admin')
+                else:
+                    #target doesn't exist 
+                    flash("User does not exist!!",category="error")
+                    return redirect('/admin') 
+            else:
+                return redirect('/admin')
+       
+        else: 
+            #not admin
+            return redirect('/')     
+    else:
+        #not loggedin
+        return redirect('/login')
+
 @app.route('/admin')
 def admin():
+    roles=["Regular","Admin"]
     if session and 'loggedin' in session.keys() and session['loggedin']:
 
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
@@ -161,7 +212,11 @@ def admin():
         account = cursor.fetchone()
         user = account['fname']
         if account['admin'] == 1:  
-            return render_template('admin.html',user=user)
+            cursor.execute('SELECT `id`,`email`, `admin` FROM `cssecdv-mp`.accounts')
+            records = cursor.fetchall()
+            for i in range(len( records)):
+                records[i]['role'] = roles[records[i]['admin']]
+            return render_template('admin.html',user=user,records=records)
         else: 
             return redirect('/')
     else:
