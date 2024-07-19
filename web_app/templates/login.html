@@ -22,7 +22,6 @@
 <h1>Login Page</h1>
 <form action = '/login', method = "POST">
     <div class="row justify-content-center">
-        <div class="msg" style="color: red;">{{msg}}</div>
         <table  style="text-align: left;">
             <tr>
                 <td style="padding-right:10px; padding-top: 20px;"><label for="user"><b>Email</b></label></td>
@@ -32,6 +31,8 @@
                 <td style="padding-right:10px"><label for="pass"><b>Password</b></label></td>
                 <td style="padding-right:10px"><input style="width:300px;" type="password" placeholder="Enter Password" name="pass" id="pass" required></td>
             </tr>
+            <tr><td style="padding-top:10px; text-align: center;" colspan="4"><div class="msg" style="color: red;">{{msg}}</div></td> </tr>
+
             <tr>
 
                 <td style="padding-top:10px; text-align: center;" colspan="4"><button style="width: 400px" type="submit" class="btn btn-primary loginbtn" role="button">Login</button></td>
@@ -40,7 +41,7 @@
     </div>
 </form>
 <div class="container-register">
-    <p>No Acount Yet? <a href="/register">Register Now!</a>.</p>
+    <p>No Account Yet? <a href="/register">Register Now!</a>.</p>
 </div>
 
 </body>

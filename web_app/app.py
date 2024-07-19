@@ -3,6 +3,8 @@ from flask_migrate import Migrate
 from routes.auth_bp import auth_bp
 from routes.admin_bp import admin_bp
 from routes.user_bp import user_bp
+from datetime import timedelta
+from flask_mysqldb import MySQL
 
 from flask_bootstrap import Bootstrap4
 bootstrap = Bootstrap4()
@@ -12,6 +14,7 @@ from dotenv import load_dotenv
 load_dotenv()
 app = Flask(__name__)
 from flask_mysqldb import MySQL
+app.permanent_session_lifetime = timedelta(minutes=1) #set lifetime session to 30 minute
 
 mysql = MySQL(app)
 
