@@ -153,10 +153,10 @@ def login():
 def logout():
     if session and 'loggedin' in session.keys() and session['loggedin']:
         session.pop('loggedin', None)
+        logger.info(f"{session['email']} logged out")
         session.pop('id', None)
         session.pop('email', None)
         session.clear()
-        logger.info(f"{session['email']} logged out")
         return redirect('/login')
     else:
         return redirect('/login')

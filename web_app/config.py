@@ -4,13 +4,14 @@ SECRET_KEY = 'sssssssseeeeeeeeeeecrettt'
 
 # Grabs the folder where the script runs.
 basedir = os.path.abspath(os.path.dirname(__file__))
+
 import logging
 logging.basicConfig(
      format="{asctime} - {levelname} - {message}",
      style="{",
      datefmt="%Y-%m-%d %H:%M",
      level=logging.DEBUG,
-     filename="log.txt"
+     filename="./web_app//log.txt"
 )
 
 load_dotenv("../")

@@ -26,9 +26,8 @@ def profile():
     else:
         return redirect('/login')
     
-def valid_date(date): #valid considering february and 30 and 31 days
+def valid_date(date): #valid considering february and 30 and 31 days months
     date_split = str(date).split('-')
-    print(date_split)
     #year-mm-dd
     thirty_one = [1,3,5,7,8,10,12]
     if int(date_split[1])==2: #if february
@@ -39,7 +38,7 @@ def valid_date(date): #valid considering february and 30 and 31 days
             return True
         else:
             return False          
-    elif int ((date_split[1]) in thirty_one) and int(date_split[2])<=31:
+    elif (int(date_split[1]) in thirty_one) and int(date_split[2])<=31:
         return True
     elif not(int(date_split[1]) in thirty_one) and int(date_split[2])<=30:
         return True
@@ -48,6 +47,10 @@ def valid_date(date): #valid considering february and 30 and 31 days
     
 def edit():
     if session and 'loggedin' in session.keys() and session['loggedin']:
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        #For the sake of detailed logging
+        cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE email = %s and id = %s', (session['email'], session['id'],))
+        prev_details = cursor.fetchone()
         if request.method == 'POST' and  'email' in request.form and 'fname' in request.form and 'lname' in request.form and 'phone' in request.form and'bday' in request.form:
             email=request.form['email']
             lname =request.form['lname']
@@ -77,15 +80,25 @@ def edit():
 
             elif not valid_date(bday):
                 flash(f"Invalid birthday {bday}",category ='error') 
-                logger.info("Invalid date format")
+                logger.info("Invalid date")
               
             else:
                 cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
                 cursor.execute("UPDATE `cssecdv-mp`.accounts SET `fname` =%s, `lname`=%s, `phone` =%s, `birthday`=%s WHERE id=%s and email=%s",(fname,lname,phone,bday,session['id'], session['email']))
                 mysql.connection.commit()
-
+              
                 flash("Successfully updated", category='success')
                 logger.info(f"Successfully edited profile of {email}")
+                if prev_details['fname'] != fname:
+                    logger.info(f"Changed first name to {fname}")
+                if prev_details['lname'] != lname:
+                    logger.info(f"Changed last name to {lname}")
+                if prev_details['phone'] != phone:
+                    logger.info(f"Changed phone to {phone}")
+                if str(prev_details['birthday']) != str(bday):
+                    logger.info(f"Changed bday to {bday}")
+
+
 
             return redirect('/user')
                                 
