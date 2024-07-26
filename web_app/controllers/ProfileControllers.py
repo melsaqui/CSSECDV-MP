@@ -12,19 +12,21 @@ from datetime import timedelta,datetime
 #from flask_bootstrap import Bootstrap4
 #bootstrap = Bootstrap4()
 import pandas as pd
+import logging
 
 mysql = MySQL()
+logger = logging.getLogger(__name__)
 
 def profile():
     if session and 'loggedin' in session.keys() and session['loggedin']:
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE email = %s and id = %s', (session['email'], session['id'],))
         account = cursor.fetchone()
-        
         return render_template('profile.html',admin=account['admin'],info=account)
     else:
         return redirect('/login')
-def valid_date(date): #valid considering february
+    
+def valid_date(date): #valid considering february and 30 and 31 days
     date_split = str(date).split('-')
     print(date_split)
     #year-mm-dd
@@ -54,27 +56,42 @@ def edit():
             bday =request.form['bday']
             if email!=session['email']:
                 flash("You can only edit you profile. If you are an admin go to admin panel", category ="error")
+                logger.info(f"Invalid access to edit {email} in this page")
+
                 return redirect('/user')
             elif not re.match(r'^([A-Za-z]\s*)+$', fname):
                 flash('Invalid Name!',category ='error')
+                logger.info("Invalid name format")
             elif not re.match(r'^([A-Za-z]\s*)+$', lname):
                 flash('Invalid Name!',category ='error')
+                logger.info("Invalid name format")
+
             elif not re.match(r'^09\d{9}$', phone) and not re.match(r'^[+]{1}(?:[0-9\-\(\)\/\.]\s?){6,15}[0-9]{1}$', phone):
                 flash("Invalid phone number",category ='error')
+                logger.info("Invalid phone format")
+
             elif not re.match(r'^((19|20)\d{2})-((1[0-2])|(0[1-9]))-(([0-2]\d)|(3[0-1]))$',bday):
                 flash(f"Invalid birthday {bday}",category ='error')
+                logger.info("Invalid date format")
+
+
             elif not valid_date(bday):
-               flash(f"Invalid birthday {bday}",category ='error')               
+                flash(f"Invalid birthday {bday}",category ='error') 
+                logger.info("Invalid date format")
+              
             else:
                 cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
                 cursor.execute("UPDATE `cssecdv-mp`.accounts SET `fname` =%s, `lname`=%s, `phone` =%s, `birthday`=%s WHERE id=%s and email=%s",(fname,lname,phone,bday,session['id'], session['email']))
                 mysql.connection.commit()
 
                 flash("Successfully updated", category='success')
+                logger.info(f"Successfully edited profile of {email}")
+
             return redirect('/user')
                                 
         else:
             flash("Error: Something Happened",category='error')
+            logger.error("Something Happened")
             return redirect('/user')
 
     else: 

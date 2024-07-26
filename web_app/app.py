@@ -40,10 +40,11 @@ def handle_exception(e):
     
     # If in debug mode, return the stack trace
     if app.debug:
-        return str(traceback.format_exc())
+        print(traceback.format_exc()) #show in console
+        return (traceback.format_exc())
     else:
         # If not in debug mode, return a generic error message
-        return "An internal error occurred", 500
+        return "<h1>Soryy, An internal error occurred<h1>", 500
 
 if __name__ == '__main__':
    # app.debug = True #can remove this since its in config.py

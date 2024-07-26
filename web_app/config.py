@@ -15,7 +15,7 @@ logging.basicConfig(
 
 load_dotenv("../")
 # Enable debug mode.
-DEBUG = False
+DEBUG = True
 #Make your own .env file with your mysql configurations
 MYSQL_HOST = os.getenv("MYSQL_HOST")
 MYSQL_USER = os.getenv("MYSQL_USER")

@@ -21,18 +21,16 @@ TIME_FRAME = 600  # 10 minutes
 
 #index page
 def home():
-       # if session and 'loggedin' in session.keys() and session['loggedin']:
-            cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-            cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE email = %s and id = %s', (session['email'], session['id'],))
-            account = cursor.fetchone()
-            user = account['fname']  
-            return render_template('index.html', user=user, admin=account['admin'])
-       # else:
-        #    return redirect('/login')
-    
-        
-    
-    
+    #raise Exception("Test purposes")
+    if session and 'loggedin' in session.keys() and session['loggedin']:
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE email = %s and id = %s', (session['email'], session['id'],))
+        account = cursor.fetchone()
+        user = account['fname']  
+        return render_template('index.html', user=user, admin=account['admin'])
+    else:
+        return redirect('/login')
+       
 def register():
     if session and 'loggedin' in session.keys() and session['loggedin']:
        return redirect('/')
@@ -59,18 +57,26 @@ def register():
 
             elif not re.match(r'^(([a-zA-Z0-9]+)(([-_.][a-zA-Z0-9]+)*))@(([a-zA-Z0-9-]+\.[a-zA-Z]{2,})+)$', email):
                 msg = 'Invalid email address!'
+                logger.info("Invalid email format")
             elif not re.match(r'^([A-Za-z]\s*)+$', fname):
                 msg = 'Invalid Name!'
+                logger.info("Invalid name format")
             elif not re.match(r'^([A-Za-z]\s*)+$', lname):
                 msg = 'Invalid Name!'
+                logger.info("Invalid name format")
             elif not re.match(r'^09\d{9}$', phone) and not re.match(r'^[+]{1}(?:[0-9\-\(\)\/\.]\s?){6,15}[0-9]{1}$', phone):
                 msg = "Invalid phone number"
+                logger.info("Invalid phone format")
             elif len(password) < 8:
                 msg = "Password should be at least 8 characters!"
+                logger.info("Invalid password format")
             elif password != reppass:
                 msg = "Passwords not matching"
+                logger.info("Passwords not matching")
+
             elif not email or not password or not phone or not reppass or not fname or not lname:
                 msg = 'Please fill out the form!'
+                logger.info("incomplete form")
             else:
                 cursor.execute('INSERT INTO accounts VALUES (NULL, %s, %s, %s, %s, %s, False,NULL,NULL)', (fname, lname, email, phone, hashed))
                 mysql.connection.commit()
@@ -79,6 +85,7 @@ def register():
 
         elif request.method == 'POST':
             msg = 'Please fill out the form!'
+            logger.info("Blank form")
 
         return render_template('reg.html', msg=msg)
 def limit_attempts():
@@ -117,6 +124,7 @@ def login():
             user = request.form['user']
             if not re.match(r'^(([a-zA-Z0-9]+)(([-_.][a-zA-Z0-9]+)*))@(([a-zA-Z0-9-]+\.[a-zA-Z]{2,})+)$', user): #avoid sql injection
                 msg = "Invalid user input"
+                logger.info("Invlid email format")
                 return render_template('login.html',msg=msg)
             cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
             cursor.execute('SELECT * FROM accounts WHERE email = %s', (user,))
