@@ -7,27 +7,31 @@ import bcrypt
 import re
 from werkzeug.utils import secure_filename
 import sys
+import logging
 from datetime import timedelta
-
+logger = logging.getLogger(__name__)
 mysql = MySQL()
 login_attempts = {}
 #MYSQL_CURSORCLASS= 'DictCursor'
-
 
 # Constants for brute force protection
 MAX_ATTEMPTS = 5
 BLOCK_DURATION = 300  # 5 minutes
 TIME_FRAME = 600  # 10 minutes
 
+#index page
 def home():
-    if session and 'loggedin' in session.keys() and session['loggedin']:
-        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE email = %s and id = %s', (session['email'], session['id'],))
-        account = cursor.fetchone()
-        user = account['fname']  
-        return render_template('index.html', user=user, admin=account['admin'])
-    else:
-        return redirect('/login')
+       # if session and 'loggedin' in session.keys() and session['loggedin']:
+            cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+            cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE email = %s and id = %s', (session['email'], session['id'],))
+            account = cursor.fetchone()
+            user = account['fname']  
+            return render_template('index.html', user=user, admin=account['admin'])
+       # else:
+        #    return redirect('/login')
+    
+        
+    
     
 def register():
     if session and 'loggedin' in session.keys() and session['loggedin']:
@@ -51,6 +55,8 @@ def register():
             account = cursor.fetchone()
             if account:
                 msg = 'Account already exists!'
+                logger.info("Attempted to create an existing account")
+
             elif not re.match(r'^(([a-zA-Z0-9]+)(([-_.][a-zA-Z0-9]+)*))@(([a-zA-Z0-9-]+\.[a-zA-Z]{2,})+)$', email):
                 msg = 'Invalid email address!'
             elif not re.match(r'^([A-Za-z]\s*)+$', fname):
@@ -69,6 +75,7 @@ def register():
                 cursor.execute('INSERT INTO accounts VALUES (NULL, %s, %s, %s, %s, %s, False,NULL,NULL)', (fname, lname, email, phone, hashed))
                 mysql.connection.commit()
                 msg = 'You have successfully registered!'
+                logger.info(f"User {email} created")
 
         elif request.method == 'POST':
             msg = 'Please fill out the form!'
@@ -102,6 +109,8 @@ def login():
         if request.method == 'POST' and 'pass' in request.form and 'user' in request.form:
             if not limit_attempts():
                 msg = 'Too many login attempts. Please try again later.'
+                logger.info(f"Invalid login. Too many attempts" )
+
                 return render_template('login.html', msg=msg)
 
             password = request.form['pass']
@@ -119,13 +128,16 @@ def login():
                 session['id'] = account['id']
                 session['email'] = account['email']
                 msg = 'Logged in successfully!'
+                logger.info(f"User {session['email']} is logged in" )
                 return redirect('/')
             else:
                 msg = 'Incorrect username / password!'
+                logger.info(f"Invalid login" )
                 # Increment failed attempts for the current IP
                 client_ip = request.remote_addr
                 if client_ip in login_attempts:
                     login_attempts[client_ip][0] += 1
+                    
                 else:
                     login_attempts[client_ip] = [1, time.time()]
 
@@ -136,6 +148,7 @@ def logout():
         session.pop('id', None)
         session.pop('email', None)
         session.clear()
+        logger.info(f"{session['email']} logged out")
         return redirect('/login')
     else:
         return redirect('/login')
