@@ -31,3 +31,7 @@ web_app/controllers/__pycache__/AdminControllers.cpython-312.pyc
 web_app/controllers/__pycache__/AuthControllers.cpython-312.pyc
 web_app/routes/__pycache__/admin_bp.cpython-312.pyc
 web_app/routes/__pycache__/auth_bp.cpython-312.pyc
+/web_app/__pycache__
+/web_app/__pycache__
+/web_app/__pycache__
+/web_app/controllers/__pycache__
