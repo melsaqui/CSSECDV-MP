@@ -46,5 +46,4 @@ def handle_exception(e):
         return "<h1>Soryy, An internal error occurred<h1>", 500
 
 if __name__ == '__main__':
-    app.debug = True #can remove this since its in config.py
     app.run(ssl_context=('abc.crt','abc.key'))
