@@ -225,13 +225,16 @@ def reset_pass(target_id, target_email):
         if account['admin'] == 1: 
             if not re.match(r'^(([a-zA-Z0-9]+)(([-_.][a-zA-Z0-9]+)*))@(([a-zA-Z0-9-]+\.[a-zA-Z]{2,})+)$',target_email): #avoid sql injection
                 flash("Invalid email address!",category='error')
+                logger.info("Invalid email address forman")
                 return redirect('/admin')
             if not str(target_id).isnumeric():
                 flash("Invalid id",category='error')
+                logger.info("Invalid user")
                 return redirect('/admin')
             if target_id!=None and target_email!=None and request.method == 'POST' and 'admin-pass' in request.form and 'nPass' in request.form and 'conf_pass' in request.form:   
                 if not limit_attempts():
                     flash('Too many attempts. Please try again later...',category='error')
+                    logger.info("Too many invalid passwords action temporarily blocked")
                     return redirect("/admin")   
                 pas = request.form['nPass']
                 conf_pass= request.form['conf_pass']
@@ -245,19 +248,24 @@ def reset_pass(target_id, target_email):
                     if target['admin']==0: # cannot edit other admins 
                         if len(pas)<8:
                             flash("Password should be at least 8 characters!","error")
+                            logger.info("Attempted Password to short")
                         elif pas!=conf_pass:
                             flash("Passwords Not Matching!","error")
+                            logger.info("Passwords not matching")
                         else:
                             cursor.execute("UPDATE `cssecdv-mp`.accounts SET `password` = %s WHERE id=%s and email=%s",(hashed,target_id, target_email))
                             mysql.connection.commit()
-                            flash(f'Successfully Reset, don\t forget to notify {target_email} of new password!',category='success')     
+                            flash(f'Successfully Reset, don\t forget to notify {target_email} of new password!',category='success') 
+                            logger.info(f"Reset {target_email}'s password")    
                         return redirect('/admin')
                     else:
                         flash("Error: You cannot change another admin's password!!", category="error")
+                        logger.info("Attempted to change an admin's password")
                         return redirect('/admin')
 
                 else:
                     flash("Error: Incorrect Password", category="error")
+                    logger.info("Incorrect user password")
                     client_ip = request.remote_addr
                     if client_ip in pass_attempts:
                         pass_attempts[client_ip][0] += 1
