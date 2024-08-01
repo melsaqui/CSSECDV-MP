@@ -1,9 +1,16 @@
 import os
 from dotenv import load_dotenv
-SECRET_KEY = 'sssssssseeeeeeeeeeecrettt'
+from datetime import datetime,date
 
+SECRET_KEY = 'sssssssseeeeeeeeeeecrettt'
+#now=datetime.now()
+today = date.today()
+today=today.strftime('%b_%d_%Y')
 # Grabs the folder where the script runs.
 basedir = os.path.abspath(os.path.dirname(__file__))
+#current_time = now.strftime('%H_%M_%S')
+file_name =f'log_{str(today)}.txt'
+path="./logs//"+file_name
 
 import logging
 logging.basicConfig(
@@ -11,7 +18,7 @@ logging.basicConfig(
      style="{",
      datefmt="%Y-%m-%d %H:%M",
      level=logging.DEBUG,
-     filename="./web_app//log.txt"
+     filename=path
 )
 
 load_dotenv("../")

@@ -1,0 +1,462 @@
+2024-07-31 17:10 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on https://127.0.0.1:5000
+2024-07-31 17:10 - INFO - [33mPress CTRL+C to quit[0m
+2024-07-31 17:10 - INFO -  * Restarting with stat
+2024-07-31 17:10 - WARNING -  * Debugger is active!
+2024-07-31 17:10 - INFO -  * Debugger PIN: 141-372-692
+2024-07-31 17:10 - INFO - 127.0.0.1 - - [31/Jul/2024 17:10:42] "GET / HTTP/1.1" 200 -
+2024-07-31 17:10 - ERROR - An error occurred
+Traceback (most recent call last):
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 841, in dispatch_request
+    self.raise_routing_exception(req)
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 450, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2024-07-31 17:10 - INFO - 127.0.0.1 - - [31/Jul/2024 17:10:42] "GET /favicon.ico HTTP/1.1" 200 -
+2024-07-31 17:13 - INFO - 127.0.0.1 - - [31/Jul/2024 17:13:14] "[32mGET /admin HTTP/1.1[0m" 308 -
+2024-07-31 17:13 - INFO - 127.0.0.1 - - [31/Jul/2024 17:13:14] "GET /admin/ HTTP/1.1" 200 -
+2024-07-31 17:13 - ERROR - An error occurred
+Traceback (most recent call last):
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 841, in dispatch_request
+    self.raise_routing_exception(req)
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 450, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2024-07-31 17:13 - INFO - 127.0.0.1 - - [31/Jul/2024 17:13:15] "GET /favicon.ico HTTP/1.1" 200 -
+2024-07-31 17:14 - INFO - 127.0.0.1 - - [31/Jul/2024 17:14:03] "[32mGET /user HTTP/1.1[0m" 308 -
+2024-07-31 17:14 - INFO - 127.0.0.1 - - [31/Jul/2024 17:14:03] "GET /user/ HTTP/1.1" 200 -
+2024-07-31 17:14 - ERROR - An error occurred
+Traceback (most recent call last):
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 841, in dispatch_request
+    self.raise_routing_exception(req)
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 450, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2024-07-31 17:14 - INFO - 127.0.0.1 - - [31/Jul/2024 17:14:04] "GET /favicon.ico HTTP/1.1" 200 -
+2024-07-31 17:16 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on https://127.0.0.1:5000
+2024-07-31 17:16 - INFO - [33mPress CTRL+C to quit[0m
+2024-07-31 17:16 - INFO -  * Restarting with stat
+2024-07-31 17:16 - WARNING -  * Debugger is active!
+2024-07-31 17:16 - INFO -  * Debugger PIN: 141-372-692
+2024-07-31 17:16 - INFO - 127.0.0.1 - - [31/Jul/2024 17:16:18] "GET /user/ HTTP/1.1" 200 -
+2024-07-31 17:16 - ERROR - An error occurred
+Traceback (most recent call last):
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 841, in dispatch_request
+    self.raise_routing_exception(req)
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 450, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2024-07-31 17:16 - INFO - 127.0.0.1 - - [31/Jul/2024 17:16:19] "GET /favicon.ico HTTP/1.1" 200 -
+2024-07-31 17:16 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on https://127.0.0.1:5000
+2024-07-31 17:16 - INFO - [33mPress CTRL+C to quit[0m
+2024-07-31 17:16 - INFO -  * Restarting with stat
+2024-07-31 17:16 - WARNING -  * Debugger is active!
+2024-07-31 17:16 - INFO -  * Debugger PIN: 141-372-692
+2024-07-31 17:16 - INFO - 127.0.0.1 - - [31/Jul/2024 17:16:44] "GET /user/ HTTP/1.1" 200 -
+2024-07-31 17:16 - ERROR - An error occurred
+Traceback (most recent call last):
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 841, in dispatch_request
+    self.raise_routing_exception(req)
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 450, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2024-07-31 17:16 - INFO - 127.0.0.1 - - [31/Jul/2024 17:16:45] "GET /favicon.ico HTTP/1.1" 200 -
+2024-07-31 17:19 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-07-31 17:19 - INFO - [33mPress CTRL+C to quit[0m
+2024-07-31 17:20 - ERROR - 127.0.0.1 - - [31/Jul/2024 17:20:17] code 400, message Bad request version ('Sc\x8e·<\x14ü¥-\x9b\x9fHIT\x8bGUª7øØÙÔ2\x8eóh$KÕþQ\x00ð4\x19ök\x03æ\x7f\x14þÂ')
+2024-07-31 17:20 - ERROR - 127.0.0.1 - - [31/Jul/2024 17:20:17] code 400, message Bad request version ('iµ\x87ª½B\x02Àî¦\x9c\x8eú«Gu\x10zX½>1T\x8c')
+2024-07-31 17:20 - INFO - 127.0.0.1 - - [31/Jul/2024 17:20:17] "[31m[1m\x16\x03\x01\x07\x00\x01\x00\x06ü\x03\x03·R0\x91Ä\x84âuóí\x12%ä\x07£ô.ò\x9a\x9cãÀ\x90PPä\x98\x86¿BOc k§\x18\x93\x1a]¡-\x00\x8fqÆDKÿ\x1f5Zw\x8c¼lÖþ\x1a\x95Ïè\x857*Ù\x00 êê\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x93ºº\x00\x00Di\x00\x05\x00\x03\x02h2\x00\x0b\x00\x02\x01\x00þ\x0d\x01\x1a\x00\x00\x01\x00\x01I\x00 Sc\x8e·<\x14ü¥-\x9b\x9fHIT\x8bGUª7øØÙÔ2\x8eóh$KÕþQ\x00ð4\x19ök\x03æ\x7f\x14þÂ[0m" 400 -
+2024-07-31 17:20 - INFO - 127.0.0.1 - - [31/Jul/2024 17:20:17] "[31m[1m\x16\x03\x01\x07Ï\x01\x00\x07Ë\x03\x03B\x9d\x12íæû\x8dt\x9dqpNùÕÆq<Þot\x88\x12\x04\x881¤éG5hrX ¿\x0dHNâ \x1aI0'P\x1aßwh\x0eÌÎF÷\x93o\x9a+Åi®\x15Íüµ\x8d\x00 JJ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x07búú\x00\x00\x003\x04ï\x04íúú\x00\x01\x00c\x99\x04À\x0fë~½\x0eÐM\x1f\x02yÛg\x85ý\x90¦éZ\x06\x17\x8d\x11Áø¨èv\x0b\x1dÚÁB8§®Î"!¹e¡\x98ÖÎ\x8c\x87¯ÄP^B,­(ìµ\x93ón\x8a°¿El+­öYY¡Ê\x00k¦ëI+Ã(1¬L\x11cðÄÍ;Îàgwjð\x03`Án \x83.\x1aã´ïwhJÔ"\x95¦\x046B#Ú%.\x9fB\x83èÐ\x98.àgWñ0:°`çqÉ=AWjQu\x0ciµ\x87ª½B\x02Àî¦\x9c\x8eú«Gu\x10zX½>1T\x8c[0m" 400 -
+2024-07-31 17:20 - ERROR - 127.0.0.1 - - [31/Jul/2024 17:20:17] code 400, message Bad request version ('ÊÊ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06SÊÊ\x00\x00\x00#\x00\x00\x00')
+2024-07-31 17:20 - INFO - 127.0.0.1 - - [31/Jul/2024 17:20:17] "[31m[1m\x16\x03\x01\x06À\x01\x00\x06¼\x03\x03\x06L\x81ê\x89{Ý\x86\x98À(\x0bÁ¼ªï\x8eòÝ¨\x12\\çShGÑh%täÞ ö8\x81êª\x91\x1eÌ^®\x83í0\x03ÍvòÐ\x96uÆ\x0ek6é}*{h\x88\x1a_\x00 ÊÊ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06SÊÊ\x00\x00\x00#\x00\x00\x00[0m" 400 -
+2024-07-31 17:20 - ERROR - 127.0.0.1 - - [31/Jul/2024 17:20:17] code 400, message Bad request version ('\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00')
+2024-07-31 17:20 - INFO - 127.0.0.1 - - [31/Jul/2024 17:20:17] "[31m[1m\x16\x03\x01\x07\x00\x01\x00\x06ü\x03\x03\x97d%þ§ÅôÃ\x045\x02¾\x8a2$EH\x0e*á¶VdÊÃË\x8d6á\x1cìk \x0dÄ§èîU¼Ârî»ã>\x1d+ÓÒü*Ågq\x1c:¤lú±\x9fÓñð\x00 \x8a\x8a\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x93ªª\x00\x00\x00\x0d\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00[0m" 400 -
+2024-07-31 17:21 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-07-31 17:21 - INFO - [33mPress CTRL+C to quit[0m
+2024-07-31 17:21 - ERROR - 127.0.0.1 - - [31/Jul/2024 17:21:57] code 400, message Bad request version ('|8<´!9:Sùº,\x86\x99«(Ïèr°`:')
+2024-07-31 17:21 - INFO - 127.0.0.1 - - [31/Jul/2024 17:21:57] "[31m[1m\x16\x03\x01\x06À\x01\x00\x06¼\x03\x03ñ\x0dZ-ñ±$%\x9f¡÷è\x15j÷\x0e\x02Ø\x7f\x81¬\x09Ä9.Z\x16)ZÉ\x83+ õW\x7fgô1\x18JB\x91¹pmTÖáünh±¿@äÆç#\x09\x8fNNÃä\x00 \x8a\x8a\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06S\x1a\x1a\x00\x00\x00+\x00\x07\x06ºº\x03\x04\x03\x03\x00\x17\x00\x00\x00\x0d\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01ÿ\x01\x00\x01\x00\x003\x04ï\x04íÊÊ\x00\x01\x00c\x99\x04ÀV3O%\x89QO¤NÜ\x02ÒÏ:\x18\x9a\x14\x8f\x1e÷zh6\x15\x94\x88«LS~vq\x92¢¢Ï\x80«òûÆ\x95\x18\x81÷F\x80P»»è\x95\x9fÄ<\x80Â\x98\x1f\x8cE¹\x95\x08ÏúÒ.\x9a4U¹EE/¨\x98ö\x84eî\x9aµþ'­½ftl6k©Ê\\Ú1qdó@\x9cJ>$z\x9a\x82«\x0e\x95\x06\x11èl»êÄ\x8a¯k8\x7f\x0cXÙö\x1d=Y'?\x13ÎJÇ@E¨´r\x94Í\x94k\x18á\x03D^\x08\x00T¨1aE­QÂ\x01\x91ç~Ô9Ç\x8a¥Tþ\x13p\x05Ìz ú±ÓtÊ\x1e\x98\x16\x199\x1b#EÊê\x86\x13óÆ\x07ræ\x9cqÃUbÚ½\x9a©¬Os\x84­Æ\x9f\x8dHC+\x87¼WfJ\x06w\x16\x93\x0c \x9c*\x0cÖ\x93\x0b\x1d¢>@\x85|8<´!9:Sùº,\x86\x99«(Ïèr°`:[0m" 400 -
+2024-07-31 17:21 - ERROR - 127.0.0.1 - - [31/Jul/2024 17:21:57] code 400, message Bad request version ('\x95¬Ör»G')
+2024-07-31 17:21 - INFO - 127.0.0.1 - - [31/Jul/2024 17:21:57] "[31m[1m\x16\x03\x01\x06 \x01\x00\x06\x9c\x03\x03Ïü¨#sæ\x11÷[G\x06\x9c\x88~½7\x8aF?·`fkc\x8d«ý×¨\x84Gs <Vñ¼\x96\x91ë¬Ó\x15y0­ \x95¬Ör»G[0m" 400 -
+2024-07-31 17:21 - ERROR - 127.0.0.1 - - [31/Jul/2024 17:21:57] code 400, message Bad request version ('\x00')
+2024-07-31 17:21 - INFO - 127.0.0.1 - - [31/Jul/2024 17:21:57] "[31m[1m\x16\x03\x01\x06À\x01\x00\x06¼\x03\x03ÑyÆà¼p¨\x0e\x164\x874\x09`\x91º/\x99¾¸Õû\x96-\x9b×i\x9dÇ~\x0fÏ ü¢½\x1e'k÷/§R×o+Ë\x1c\x00Ê\x99\x1bõ4\x17ª7#\x81iÜj\x88\x98\x1d\x00 [0m" 400 -
+2024-07-31 17:21 - ERROR - 127.0.0.1 - - [31/Jul/2024 17:21:57] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x07\x00\x01\x00\x06ü\x03\x03\x97ó)´\x08')
+2024-07-31 17:21 - INFO - 127.0.0.1 - - [31/Jul/2024 17:21:57] "[31m[1m\x16\x03\x01\x07\x00\x01\x00\x06ü\x03\x03\x97ó)´\x08\x0cÉ»\x8b^Ré\x91N\x91×È`_Gc\x11\x7f\x9fâ¤\x9eèä[0m" 400 -
+2024-07-31 17:21 - ERROR - 127.0.0.1 - - [31/Jul/2024 17:21:59] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x06À\x01\x00\x06¼\x03\x03\x93¯l}ãKánVÑfÄ{5:')
+2024-07-31 17:21 - INFO - 127.0.0.1 - - [31/Jul/2024 17:21:59] "[31m[1m\x16\x03\x01\x06À\x01\x00\x06¼\x03\x03\x93¯l}ãKánVÑfÄ{5:\x1dG¤ä&÷[0m" 400 -
+2024-07-31 17:21 - ERROR - 127.0.0.1 - - [31/Jul/2024 17:21:59] code 400, message Bad request version ('?~Às')
+2024-07-31 17:21 - INFO - 127.0.0.1 - - [31/Jul/2024 17:21:59] "[31m[1m\x16\x03\x01\x06à\x01\x00\x06Ü\x03\x03«Æ\x05ö^J]ô\x19qÆ\x1f\x06Ó=}´\x1dVhâX\x13ú \x97WÙZ¾Ðê ?~Às[0m" 400 -
+2024-07-31 17:21 - ERROR - 127.0.0.1 - - [31/Jul/2024 17:21:59] code 400, message Bad request version ('\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00')
+2024-07-31 17:21 - INFO - 127.0.0.1 - - [31/Jul/2024 17:21:59] "[31m[1m\x16\x03\x01\x06à\x01\x00\x06Ü\x03\x03Î¥6 \x97&¥F\x9c¸ ¿þ±{\x1e1\x03ÈÑ.«\x06 ÄB\x87ëï'2( aS\x07x¿O\x82)o¬-ë\x10ï\x8bÛA \x0bA!pö½1*\x88f?b\x99Å\x00 êê\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06sêê\x00\x00\x00+\x00\x07\x06êê\x03\x04\x03\x03\x00-\x00\x02\x01\x01\x00\x10\x00\x0e\x00\x0c\x02h2\x08http/1.1\x00\x1b\x00\x03\x02\x00\x02\x00#\x00\x00ÿ\x01\x00\x01\x00\x00\x12\x00\x00Di\x00\x05\x00\x03\x02h2þ\x0d\x00ú\x00\x00\x01\x00\x01J\x00 \x85-rÇhb\x99ì&ìæ^\x8c1\x81 :$EÙù\x8dP´uùSÍ\x10#vB\x00Ð3\x0e³f:1eÿ\x05reOö\x9f3\x049\x0d7êÆÊ\x07ñ9ÎB;RSH\x87ÅÐ<\x9b«\x89¨¦\x89^Ú\x13\x8cbã]¶\x95ßÖÆ0ô"\x9c§íNBt¢ã®\x1c\x1eµgE+x·X¯\x8a4wí×õÞ£á²\x9f\x88ÍÂ¶5ª\x8bCOP\x1c».LªÊI\x8e,´¦®\x83©§\x00ä¯+ªÛ¼ö7¿â\x08Ý)(ÿÁ\x8f\x0b]I¯Ü\x8dÍ/HÇ\x88è\x1bª\x97\x90í[)Q[\x18iÃ\x04Ù*\x0fy¾´÷óÌãEC\x8cÛJ±X£û\x1c>\x96\x09\x8c¸g¦õ\x93Û~\x90?mÕnhE\x9bï÷Þ\x92Û\x84@'eâ¶ \x7f\x90A\x00\x05\x00\x05\x01\x00\x00\x00\x00\x00\x0d\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00[0m" 400 -
+2024-07-31 17:21 - ERROR - 127.0.0.1 - - [31/Jul/2024 17:21:59] code 400, message Bad request version ('\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00')
+2024-07-31 17:21 - INFO - 127.0.0.1 - - [31/Jul/2024 17:21:59] "[31m[1m\x16\x03\x01\x06 \x01\x00\x06\x9c\x03\x03ä¹Wb\x8a\x0b\x8b#\x0c0i\x0fÆ®Bâ\x19\x1a«Âò-\x1c\x19\x99\x95ùêðçÍ\x1c OúÊ\x99Õ÷\x02Õ1\x9fÔV÷Â/XYÕÛ¾í\x14"]\x85\x9c\x8b\x87ã\x1bìü\x00 êê\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x063::\x00\x00\x00\x0b\x00\x02\x01\x00\x00#\x00\x00\x00-\x00\x02\x01\x01þ\x0d\x00º\x00\x00\x01\x00\x01²\x00 ¯i\x8a\x16\x88Ù\x0eºÕÙ£.\x1cdØx(|\x16:¼ÎE1\x95rg\x8cä\x91~{\x00\x90úñ¨Ö2K Ó£¬Eé(\x92P\x053ø[ª\x96Æ!úï4­\x93Ú\x0eÅöbÀõ\x0c\x92á\x95½Kd\x97V¡ÔÜ½\x94\x9e^¯Kã?\x8dÉËC\x8cdÛ÷\x1a\x8a\x00Ù}|òò:k\x0d¢¥ÕÐ\x8cèäáÒû\x9e\x8bÍ\x05\x18\x11æáL²9Y8°¯ý\x02[$.r4\x875ÄZ\x88h²Å\x02»-ÎÞ\x1fµÕ\x826LowfjD¬1zÌ}V\x8cÿóÌ'U±\x8cÿ\x01\x00\x01\x00\x00\x0d\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00[0m" 400 -
+2024-07-31 17:22 - ERROR - 127.0.0.1 - - [31/Jul/2024 17:22:00] code 400, message Bad request version ('úú\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x93ÊÊ\x00\x00Di\x00\x05\x00\x03\x02h2ÿ\x01\x00\x01\x00\x00\x05\x00\x05\x01\x00\x00\x00\x00\x00')
+2024-07-31 17:22 - INFO - 127.0.0.1 - - [31/Jul/2024 17:22:00] "[31m[1m\x16\x03\x01\x07\x00\x01\x00\x06ü\x03\x03Ï\x16¯O¨?ö\\U«S\x9f\x05ê\x90ãGáÀÚÒóG\x89\x14oö\x80\x8d_ H )&¾#òò6\x89\x0bÃ¤\x9f\x04Ù¯¯Î\x84ô·ô\x03\x0e/¶\x8eãçF~\x8aÇ\x00 úú\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x93ÊÊ\x00\x00Di\x00\x05\x00\x03\x02h2ÿ\x01\x00\x01\x00\x00\x05\x00\x05\x01\x00\x00\x00\x00\x00[0m" 400 -
+2024-07-31 17:22 - ERROR - 127.0.0.1 - - [31/Jul/2024 17:22:00] code 400, message Bad request version ('\x00º\x00\x00\x01\x00\x01')
+2024-07-31 17:22 - INFO - 127.0.0.1 - - [31/Jul/2024 17:22:00] "[31m[1m\x16\x03\x01\x06 \x01\x00\x06\x9c\x03\x03q \x99Àïà\x14!\x81\x9eúÞß\x7fé.¦4+\x81\x07\x8c39Æ1(v|SÂÇ ,×\x9b\x9däå-þú5¶\x1c§\x0fÝ\x85\x0f\x8a|\x9cøF\x08ÐÝ?\x83÷\x1e&µ\x99\x00 zz\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x063jj\x00\x00þ\x0d\x00º\x00\x00\x01\x00\x01[0m" 400 -
+2024-07-31 17:22 - ERROR - 127.0.0.1 - - [31/Jul/2024 17:22:00] code 400, message Bad request version ('\x00\x02\x01\x00\x00-\x00\x02\x01\x01\x00')
+2024-07-31 17:22 - INFO - 127.0.0.1 - - [31/Jul/2024 17:22:00] "[31m[1m\x16\x03\x01\x07\x00\x01\x00\x06ü\x03\x03Ê®ní\x9aã|8v\x83\x87<´\x80.T\x95¾«\x19\x9e^\x1b¿jf\x8bAî\x96\x11\x8f êÂ`+WjgÕñqÇ/\x10/Å}Å²\x08\x92Í¼HßãZ\x02\x85'aÿú\x00 zz\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x93::\x00\x00\x00\x05\x00\x05\x01\x00\x00\x00\x00\x00\x12\x00\x00\x00#\x00\x00\x00\x0d\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01þ\x0d\x01\x1a\x00\x00\x01\x00\x01T\x00 7m\x06 \x06\x00ÌZ"n\x92ZþyTû: ðòÛý\x09zWñ\x00\x86xúN%\x00ð\x97Û{\x11\x16ñÏü>øy\x8dM7çI\x9f?ÒÔ+§\x88\x93^Î¼½ô.5<íhÿ8 áÎoµ\x9eêæ.\\w\x02£\x83'èWäKS\x1e&ê\x05\x8e!<Éÿ·$\x17J±a\x005w\x8cØþJQc\x08\x8e¿¼Ê?$'éò§ë\x9f±?\x1dfàcñ®h5¥rã b6Vwî?OÈK2\x0fã\x03NDãèÄ²\x1a<Ò\x12®?\x91£m\x07Z\x18¾ñÂRÈ«Õ\x17 8\x94\x01¾ýNe"ªGÊÎ\x09öèáf\x87z^ÿa±}Ò û\x0bn\x9f\x10Þ¦Å¨GYþ/U\x8e¢\x10\x9aaÌ\x88H\x0b.\\\x0eÑiÌG?Q)'\x87\x09ê9ä»,X¤ú\x18ÙoÿSo\x84ì{Í»[í\x8aÂ[«¢\x19\x84}\x1eo\x00\x0b\x00\x02\x01\x00\x00-\x00\x02\x01\x01\x00[0m" 400 -
+2024-07-31 17:22 - ERROR - 127.0.0.1 - - [31/Jul/2024 17:22:00] code 400, message Bad request version ('úú\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x93')
+2024-07-31 17:22 - INFO - 127.0.0.1 - - [31/Jul/2024 17:22:00] "[31m[1m\x16\x03\x01\x07\x00\x01\x00\x06ü\x03\x03|ß\x9a\x97ïþ;\x02°\x192z§Æ`egI{dÕpº\x97ê\x7f;\x90Ñ\x8fÙö \x01ÆÉúöø\x09AR`(|j,\x1cãÕG\x9dg\x00Tq\x83úû»\x1d\x16õ5ú\x00 úú\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x93[0m" 400 -
+2024-07-31 17:22 - ERROR - 127.0.0.1 - - [31/Jul/2024 17:22:05] code 400, message Bad request version ('\x00\x02\x01\x00\x00')
+2024-07-31 17:22 - INFO - 127.0.0.1 - - [31/Jul/2024 17:22:05] "[31m[1m\x16\x03\x01\x06À\x01\x00\x06¼\x03\x03Öa+\x8b:X1BÐ³¯«s\x83Ì<Eø¥õQÃ¦´×\x82ô#\x1b_aÌ cáj>ó Ù¬¹G\x8f\x07­\x00X\x06\x85Õ\x17÷ÓÉÞ§îj¬\x89:Q\x98\x1a\x00 \x1a\x1a\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06SJJ\x00\x00\x00\x05\x00\x05\x01\x00\x00\x00\x00\x00\x0b\x00\x02\x01\x00\x00[0m" 400 -
+2024-07-31 17:22 - ERROR - 127.0.0.1 - - [31/Jul/2024 17:22:05] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x07\x00\x01\x00\x06ü\x03\x03M$\x8eÔ\xad9¢ç^ä\x02hJå:Þî\x88î\x00t>Á"\x99ü\x057\x02E¢Û')
+2024-07-31 17:22 - INFO - 127.0.0.1 - - [31/Jul/2024 17:22:05] "[31m[1m\x16\x03\x01\x07\x00\x01\x00\x06ü\x03\x03M$\x8eÔ­9¢ç^ä\x02hJå:Þî\x88î\x00t>Á"\x99ü\x057\x02E¢Û ©þW,äa[0m" 400 -
+2024-07-31 17:22 - ERROR - 127.0.0.1 - - [31/Jul/2024 17:22:05] code 400, message Bad request version ('ZZ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x93jj\x00\x00\x00#\x00\x00\x00\x05\x00\x05\x01\x00\x00\x00\x00Di\x00\x05\x00\x03\x02h2\x00')
+2024-07-31 17:22 - INFO - 127.0.0.1 - - [31/Jul/2024 17:22:05] "[31m[1m\x16\x03\x01\x07\x00\x01\x00\x06ü\x03\x03X[¥á};j\x93ù¯J¨N¬â\x9d{\x97\x16\x8c`Ù\x09^\x04\x04F\x85Ú\x04\x13\x0e PÚ³gø1eKÍÙY}\x05\x95\x13OzÕ\x0b!\x88Ìø!BÄHÀ^¿®}\x00 ZZ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x93jj\x00\x00\x00#\x00\x00\x00\x05\x00\x05\x01\x00\x00\x00\x00Di\x00\x05\x00\x03\x02h2\x00[0m" 400 -
+2024-07-31 17:22 - ERROR - 127.0.0.1 - - [31/Jul/2024 17:22:06] code 400, message Bad request version ('ùÆ\x04\x19Æ\xad`)\x9atWåâHwã§Û')
+2024-07-31 17:22 - INFO - 127.0.0.1 - - [31/Jul/2024 17:22:06] "[31m[1m\x16\x03\x01\x06 \x01\x00\x06\x9c\x03\x03>¦µÿp\x09ú\x8c$\x978\x0b÷â=\x8bû\x15¦ÚA\x1dá\x04\x0b§\x06\x17xË\x9ac  »s]\x18ðØðJÖ¿^?t%H\x8c¢\x9dÊ\x08áòIò£¤=\x18)Â\x9e\x00 ºº\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x063\x9a\x9a\x00\x00\x00\x12\x00\x00\x00\x10\x00\x0e\x00\x0c\x02h2\x08http/1.1\x00\x0d\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00\x05\x00\x05\x01\x00\x00\x00\x00þ\x0d\x00º\x00\x00\x01\x00\x01\x84\x00 *`¡\x9cæ»\x0f^-æ»mÙÐ­N\x8bd\x06/\x11®ZÜ\\WÜí=<¿T\x00\x90\x183ëjº±K¢ópZDh;Ý¾\x9bx\x8f\x12O¼º¥,¼UZ\x843±9z/\x83\x1c¥}\x91+\x1f\x87bÏE2ãX\x0b×o\x1e`&\x09\x04À¼\x12*ëib2dòõ(»\x1ecnàB/:\x8al\x082FEoó\x93=hhw\x9b]Ü\x17ï\x1c\x03^ßïVykªìR\x8bd,á:ø²"AÞ\x11]òôÖYh\x10i\x9ec\x94È\x957*Ñ(×Ü\x81Å\x03³û!\x10\x9f\x86\x00\x17\x00\x00\x00+\x00\x07\x06::\x03\x04\x03\x03\x00#\x00\x00\x003\x04ï\x04íúú\x00\x01\x00c\x99\x04Àb) ûj_("wÓójJxv¥\x0e2\x02êÞ\x85\\Æ\x15¶Cí\x0f2ER;\x80ÃÂà\x15\x97\x9b\x09ÚÖPå£x\x04µ¨çÐzÚ\x82\x9f\x0f\x14\x1d\x16*\x1fZcq\x88|zÔ\x96º5\x1bRaAm![\x97\\d\x9c\x82\x15aè\x92<Ó8\x96\x8aÄ«ïâYUk\x9eò«¬ît\x99ÿªÁâò¬Ö\x05ÃUv\x82\x06\x1151ËHúk°\x08\x03\x9dº°È\x02éAöT2\x06Ë\x94î!'\x96VÇ\x9a*A\x18åÂÚ\x13\x1cÛ"G>1\x9b\x06fz¿Ö¨G1\x97\x8dP\x14\x90ªÄ¡Q*\x87£\x8döZOJå·NµA\x9e\x1cQ\x96zM\x96Ó~´Ö\x14þ\x18\x0bC\x93uØdq¯Éc45§¼¬\x15¬5L}\x01\x8a\x12§+Ý\x0c\x83\x83û¥\x01\\pôE\x82Å|\x9c\x97d;>J\x83fQÂ\x12¥Î\x15\x95Å\x04tWÈ\x92?\x81j\x82Ñ\x86\x87 i\x9eY$Fd\x8aO¹\x88¡\x1fùÆ\x04\x19Æ­`)\x9atWåâHwã§Û[0m" 400 -
+2024-07-31 17:22 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on https://127.0.0.1:5000
+2024-07-31 17:22 - INFO - [33mPress CTRL+C to quit[0m
+2024-07-31 17:22 - INFO -  * Restarting with stat
+2024-07-31 17:22 - WARNING -  * Debugger is active!
+2024-07-31 17:22 - INFO -  * Debugger PIN: 141-372-692
+2024-07-31 17:23 - INFO - 127.0.0.1 - - [31/Jul/2024 17:23:02] "GET / HTTP/1.1" 200 -
+2024-07-31 17:23 - ERROR - An error occurred
+Traceback (most recent call last):
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 841, in dispatch_request
+    self.raise_routing_exception(req)
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 450, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2024-07-31 17:23 - INFO - 127.0.0.1 - - [31/Jul/2024 17:23:03] "GET /favicon.ico HTTP/1.1" 200 -
+2024-07-31 17:23 - INFO - melanie_aquino@dlsu.edu.ph logged out
+2024-07-31 17:23 - INFO - 127.0.0.1 - - [31/Jul/2024 17:23:30] "[32mGET /logout HTTP/1.1[0m" 302 -
+2024-07-31 17:23 - INFO - 127.0.0.1 - - [31/Jul/2024 17:23:30] "GET /login HTTP/1.1" 200 -
+2024-07-31 17:23 - ERROR - An error occurred
+Traceback (most recent call last):
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 841, in dispatch_request
+    self.raise_routing_exception(req)
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 450, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2024-07-31 17:23 - INFO - 127.0.0.1 - - [31/Jul/2024 17:23:30] "GET /favicon.ico HTTP/1.1" 200 -
+2024-07-31 17:23 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-07-31 17:23 - INFO - [33mPress CTRL+C to quit[0m
+2024-07-31 17:23 - ERROR - 127.0.0.1 - - [31/Jul/2024 17:23:53] code 400, message Bad request version ('**\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x07¢')
+2024-07-31 17:23 - INFO - 127.0.0.1 - - [31/Jul/2024 17:23:53] "[31m[1m\x16\x03\x01\x08\x0f\x01\x00\x08\x0b\x03\x031B¦\x88çou\x85Ï'üÎ\x87\x11X\x19¯¼?ÀPÌ88K\x8e4MW\x07ËÖ y\x8a'NtBf\x8eQÇæ\x1bÊl.\x8aøÙ\x1f\x199¢øV:\x17sOÎ\x9e«ê\x00 **\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x07¢[0m" 400 -
+2024-07-31 17:23 - ERROR - 127.0.0.1 - - [31/Jul/2024 17:23:53] code 400, message Bad request version ('\x9a\x9a\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x07B\x1a\x1a\x00\x00\x003\x04ï\x04í')
+2024-07-31 17:23 - INFO - 127.0.0.1 - - [31/Jul/2024 17:23:53] "[31m[1m\x16\x03\x01\x07¯\x01\x00\x07«\x03\x03<ýRÔ\x04³Z &Ë\x15­\x8d|9PúÐp\x98s«L!Õ¼,\x1b\x97¤ß\x87 IØÓwØÂúýÉóVRtjX\x93/\x96?\x0b\x99\x90Þ³'Ø(°\x86GÉ\x82\x00 \x9a\x9a\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x07B\x1a\x1a\x00\x00\x003\x04ï\x04í[0m" 400 -
+2024-07-31 17:23 - ERROR - 127.0.0.1 - - [31/Jul/2024 17:23:53] code 400, message Bad request version ('2õ\x93ÂÆ\x93\x17VEiI1l¼\x16±³¥H~Q¬¼¸JýØ\x80älK\x90[`\x04±,¾õ¯\x82¦:\x05p\x1aë1¢=\x19\x08éT\x8dªE0ZSAø\x18Çá\x04»aâ¹`IÏO\x07|¬\x8b3Üú°W\x96\x18öa&\x84Ó0\x10')
+2024-07-31 17:23 - INFO - 127.0.0.1 - - [31/Jul/2024 17:23:53] "[31m[1m\x16\x03\x01\x06À\x01\x00\x06¼\x03\x03Æ}8\x89\x05\x1eÂ\x12àº_rS4\x83bvT^m\x10À¶6\x8d_nT¬\x1fÌ\x8e êì«}HD¼píA\x11ÔûG\x1dm?sj©J®é\x86\x024P]ãÇîx\x00 jj\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06Sjj\x00\x00þ\x0d\x00Ú\x00\x00\x01\x00\x01\x02\x00 è¤\x0f_£|\x9cKÙäcâ-Úác(ýþ$xÞM×ÞÝïï\x16\x81)\x04\x00°\x1b\x90ò\x00¯5Mâ\x93dI'\x1d·\x90ùF<2\x83¬Ù~ø;µ¡FÌ£àÐ9y×\x95\x00\x1fÎ\x93\x87ë¿ö¦G\x9d\x9dÜàO»Ww\x82ô+\x0bê\x1aEæ¥\x9a¦\x15u=êl\x11¬­á92-\x15R¶:\x07+\x9eEéÃ\x0bÿ÷c[}ø};fO\x97ÕV\x99ÿ\x01÷`;wTmù£Z¯Þi·h~ÖÓ±øàdäÓ¦Çêê#^\x99µ\x1dácÍ5¢FBx\x8b\x8aÏX\x01\x95±äIßª\x00à: ï\x1c\x83A\x92\x18R\x1dQÌd\x9bh`\x9aô1\x00\x1b\x00\x03\x02\x00\x02\x00\x10\x00\x0e\x00\x0c\x02h2\x08http/1.1\x00\x0d\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x003\x04ï\x04íÚÚ\x00\x01\x00c\x99\x04À\x0e@º¥lØÎ:ÄÂ{\x92\x84¯»\x05©}óÈG\x0d2õ\x93ÂÆ\x93\x17VEiI1l¼\x16±³¥H~Q¬¼¸JýØ\x80älK\x90[`\x04±,¾õ¯\x82¦:\x05p\x1aë1¢=\x19\x08éT\x8dªE0ZSAø\x18Çá\x04»aâ¹`IÏO\x07|¬\x8b3Üú°W\x96\x18öa&\x84Ó0\x10[0m" 400 -
+2024-07-31 17:23 - ERROR - 127.0.0.1 - - [31/Jul/2024 17:23:53] code 400, message Bad request version ('Åú\x0e=D\x7f\x96¨\x06Ü1`\x87`')
+2024-07-31 17:23 - INFO - 127.0.0.1 - - [31/Jul/2024 17:23:53] "[31m[1m\x16\x03\x01\x06à\x01\x00\x06Ü\x03\x03\x14Ðpmþ<·\x1dpæ+\x91Áâ7ïZ\x02Ák\x1e°9¨8.¿½<å=\x12 iâ¸«ø\x80Ñá\x1aJ\x03h^É\x82!\x17\x84ý\x19È,\x0e³\x10®³N\x00pB\x0f\x00 êê\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06s\x8a\x8a\x00\x00\x00#\x00\x00\x00\x10\x00\x0e\x00\x0c\x02h2\x08http/1.1\x00+\x00\x07\x06úú\x03\x04\x03\x03ÿ\x01\x00\x01\x00þ\x0d\x00ú\x00\x00\x01\x00\x01Â\x00 ò\x08{¸\x94ÏZ\x80¥\x03HÙ\x1e¶r³Éä\x0fq\x7f_½k\x852ë²È¬_u\x00Ð\x1d\x81=\x19Òv{_{ô\x83û\x90\x88\x08\x86\x03:ÓÅ\x00º\x97ZMþÿht1jy Àò\x19 ñ\x13ì­Ðÿ\x18\x00]¨Äe\x02úh\x9d\x0e)xÇ*.\x87\x09\x89:\\­\x1e\x12¬m\x11\x94 \x11 b)\x98\x8f? @$f¸\x80\x8eÈG\x00­9ÐbÂ(\x15\x90øá±í7\x9f(½\x0eälü¨µ\x92¡p±\x18-y®r&{b\x84Ú\x0dÌæm\x8ch\x15Íq\x15E\x7f\x8aØ3õgkÂ\x0eBÉ®õ^x\x1e?e8\x1e:®\x87mò`q\x87È;£G\x07\x81Ü\x1beð\x0e\x14ó\x13 ík\x89\x91½:£)ù\x0c'Påkuî\x84¿\x12\x96ÏiØ'¹XÒA+Di\x00\x05\x00\x03\x02h2\x00\x1b\x00\x03\x02\x00\x02\x003\x04ï\x04í\x9a\x9a\x00\x01\x00c\x99\x04ÀÝJÔÀ"["ÂüJaHðRIDN\x82\x11\x94+|\x1cô\x1a?\x84)\x02ãë?YÜ¶oº\x0dÅú\x0e=D\x7f\x96¨\x06Ü1`\x87`[0m" 400 -
+2024-07-31 17:23 - ERROR - 127.0.0.1 - - [31/Jul/2024 17:23:53] code 400, message Bad request version ('\x93\x8a9\x16"\x9d\x136ªë·\x8c*5J*¢Â#m')
+2024-07-31 17:23 - INFO - 127.0.0.1 - - [31/Jul/2024 17:23:53] "[31m[1m\x16\x03\x01\x06à\x01\x00\x06Ü\x03\x035\x0bÎôEg\x0fdN\x8f0PS:ýz½âJÛSLÖ\\¹Ý\x1d·\x02ýrÄ ÆéÆ!ÅnÉP\x02^rë00%½l\x84º~%Ç)\x9cwd\x99p\x11Jj\x01\x00 JJ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06sêê\x00\x00\x00\x12\x00\x00\x00\x05\x00\x05\x01\x00\x00\x00\x00\x003\x04ï\x04íZZ\x00\x01\x00c\x99\x04À\x1b\x19\x07ªL\x9f\x1bT.%\x18OH\x1bvÆ\x8e\x12±´ÿN\x11OMÌ~r\x93Ki\x1e\x8e0¤ã3\x1d:¨¼TdA\x90æ\x90~G£\x86j\x07Ç¢u8Ã¾Ï\x16rÍ°\x8c\x99Éz^ç»\x88\x87\x0f~\x11´ÿ8\x0d*È4.\x15\x04\x8c¼:\\c|÷ÌÊ\x9e«(3Å¼ÞÒÂ(0¨ü\x86¢è7Oyy¡°\x11#h¨\x13ê\x06!àç»\x10ÓOÀ\x87\x9aé\x11\x0cr¬yõ\x8b°\x1fË\x96\x04\x9a,\x9f\x87h\x8b°j\x89@N^GG(\x0b\x19\x14÷Ë\x92ø%°X\x1a­\x01@ 5\x19i¢\x13#£²o\x08ÎÞ\x117\x0c;\x88î\x93XKV¥ødZàÂ@ïv[\x9b\x01²&Ñ¼r7QM<\x06\x06é!28%\x87\x1c=o\x93k)äRj¦ dõ7RrGý Cê%¦åH\x90þ'¦jÖ1 è\x00\x955\x8d´W'}¦\x82âª±Ü÷^ À¬!`tÔ¸\x17n@e\x15SÄ\x14\x04t0k¢\x9a¡NKC\x98%¶ºÖÃ.¼àlö\x90)ØÚ{[\x0c«ö 3\x8bx\x05û\x88\x136#sX7\x82jÂ¤ãÛ·V\x02[Z\x194\x8cñH\x9a\x97¾§\x97x¦\x1bH>ÜJ\\;X\x821]\x9eç\x05uì\x19\x00\x86\x18öD­o\x92&2+ ¥á3DË¬\x88GRØ\x0042æ\x11\x1d\x93\x8a9\x16"\x9d\x136ªë·\x8c*5J*¢Â#m[0m" 400 -
+2024-07-31 17:23 - ERROR - 127.0.0.1 - - [31/Jul/2024 17:23:53] code 400, message Bad request version ('\x90(')
+2024-07-31 17:23 - INFO - 127.0.0.1 - - [31/Jul/2024 17:23:53] "[31m[1m\x16\x03\x01\x06à\x01\x00\x06Ü\x03\x03\x98\x0dÃo5:Â\x80\x9f×5.ÁÒÜÎj\x1f.çW`\\okR«F}1\x97\x02 ="â¦riZ\x0c#ÉoØ"·\x95©Fµ«Ë\x8d¨øD0(\x9eá\x91OqÁ\x00 ÊÊ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06sÚÚ\x00\x00þ\x0d\x00ú\x00\x00\x01\x00\x01s\x00 \x10ÆFô¤Û³UÅn\x9d×\x93\x0b\x1d×Ày\x92Ô\x1aÔ®ÝSÉà\x8búäV_\x00Ð\x18¶bN¿/\x0b>¯\x8d\x0d\x90([0m" 400 -
+2024-07-31 17:24 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-07-31 17:24 - INFO - [33mPress CTRL+C to quit[0m
+2024-07-31 17:25 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-07-31 17:25 - INFO - [33mPress CTRL+C to quit[0m
+2024-07-31 17:26 - INFO - 127.0.0.1 - - [31/Jul/2024 17:26:01] "[32mGET / HTTP/1.1[0m" 302 -
+2024-07-31 17:26 - INFO - 127.0.0.1 - - [31/Jul/2024 17:26:01] "GET /login HTTP/1.1" 200 -
+2024-07-31 17:26 - ERROR - An error occurred
+Traceback (most recent call last):
+  File "d:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 841, in dispatch_request
+    self.raise_routing_exception(req)
+  File "d:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 450, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2024-07-31 17:26 - INFO - 127.0.0.1 - - [31/Jul/2024 17:26:02] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2024-07-31 17:26 - INFO - 127.0.0.1 - - [31/Jul/2024 17:26:09] "GET /register HTTP/1.1" 200 -
+2024-07-31 17:26 - ERROR - An error occurred
+Traceback (most recent call last):
+  File "d:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 841, in dispatch_request
+    self.raise_routing_exception(req)
+  File "d:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 450, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2024-07-31 17:26 - INFO - 127.0.0.1 - - [31/Jul/2024 17:26:09] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2024-07-31 17:26 - ERROR - An error occurred
+Traceback (most recent call last):
+  File "d:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 841, in dispatch_request
+    self.raise_routing_exception(req)
+  File "d:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 450, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2024-07-31 17:26 - INFO - 127.0.0.1 - - [31/Jul/2024 17:26:26] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2024-07-31 17:28 - INFO - User melanie_aquino@dlsu.edu.ph is logged in
+2024-07-31 17:28 - INFO - 127.0.0.1 - - [31/Jul/2024 17:28:57] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-07-31 17:28 - INFO - 127.0.0.1 - - [31/Jul/2024 17:28:57] "GET / HTTP/1.1" 200 -
+2024-07-31 17:28 - ERROR - An error occurred
+Traceback (most recent call last):
+  File "d:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 841, in dispatch_request
+    self.raise_routing_exception(req)
+  File "d:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 450, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2024-07-31 17:28 - INFO - 127.0.0.1 - - [31/Jul/2024 17:28:57] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2024-07-31 17:28 - INFO - 127.0.0.1 - - [31/Jul/2024 17:28:59] "[32mGET /admin HTTP/1.1[0m" 308 -
+2024-07-31 17:28 - INFO - 127.0.0.1 - - [31/Jul/2024 17:28:59] "GET /admin/ HTTP/1.1" 200 -
+2024-07-31 17:29 - ERROR - An error occurred
+Traceback (most recent call last):
+  File "d:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 841, in dispatch_request
+    self.raise_routing_exception(req)
+  File "d:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 450, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2024-07-31 17:29 - INFO - 127.0.0.1 - - [31/Jul/2024 17:29:00] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2024-07-31 17:32 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on https://127.0.0.1:5000
+2024-07-31 17:32 - INFO - [33mPress CTRL+C to quit[0m
+2024-07-31 17:32 - INFO -  * Restarting with stat
+2024-07-31 17:32 - WARNING -  * Debugger is active!
+2024-07-31 17:32 - INFO -  * Debugger PIN: 141-372-692
+2024-07-31 17:32 - INFO - 127.0.0.1 - - [31/Jul/2024 17:32:36] "GET /login HTTP/1.1" 200 -
+2024-07-31 17:32 - ERROR - An error occurred
+Traceback (most recent call last):
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 841, in dispatch_request
+    self.raise_routing_exception(req)
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 450, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2024-07-31 17:32 - INFO - 127.0.0.1 - - [31/Jul/2024 17:32:37] "GET /favicon.ico HTTP/1.1" 200 -
+2024-07-31 17:33 - INFO - 127.0.0.1 - - [31/Jul/2024 17:33:18] "GET /register HTTP/1.1" 200 -
+2024-07-31 17:33 - ERROR - An error occurred
+Traceback (most recent call last):
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 841, in dispatch_request
+    self.raise_routing_exception(req)
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 450, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2024-07-31 17:33 - INFO - 127.0.0.1 - - [31/Jul/2024 17:33:19] "GET /favicon.ico HTTP/1.1" 200 -
+2024-07-31 17:37 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on https://127.0.0.1:5000
+2024-07-31 17:37 - INFO - [33mPress CTRL+C to quit[0m
+2024-07-31 17:37 - INFO -  * Restarting with stat
+2024-07-31 17:37 - WARNING -  * Debugger is active!
+2024-07-31 17:37 - INFO -  * Debugger PIN: 141-372-692
+2024-07-31 17:38 - INFO - 127.0.0.1 - - [31/Jul/2024 17:38:13] "GET /register HTTP/1.1" 200 -
+2024-07-31 17:38 - ERROR - An error occurred
+Traceback (most recent call last):
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 841, in dispatch_request
+    self.raise_routing_exception(req)
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 450, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2024-07-31 17:38 - INFO - 127.0.0.1 - - [31/Jul/2024 17:38:14] "GET /favicon.ico HTTP/1.1" 200 -
+2024-07-31 20:24 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on https://127.0.0.1:5000
+2024-07-31 20:24 - INFO - [33mPress CTRL+C to quit[0m
+2024-07-31 20:24 - INFO -  * Restarting with stat
+2024-07-31 20:24 - WARNING -  * Debugger is active!
+2024-07-31 20:24 - INFO -  * Debugger PIN: 141-372-692
+2024-07-31 20:25 - INFO - 127.0.0.1 - - [31/Jul/2024 20:25:04] "[32mGET / HTTP/1.1[0m" 302 -
+2024-07-31 20:25 - INFO - 127.0.0.1 - - [31/Jul/2024 20:25:04] "GET /login HTTP/1.1" 200 -
+2024-07-31 20:25 - ERROR - An error occurred
+Traceback (most recent call last):
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 841, in dispatch_request
+    self.raise_routing_exception(req)
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 450, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2024-07-31 20:25 - INFO - 127.0.0.1 - - [31/Jul/2024 20:25:05] "GET /favicon.ico HTTP/1.1" 200 -
+2024-07-31 20:25 - INFO - Invalid login
+2024-07-31 20:25 - INFO - 127.0.0.1 - - [31/Jul/2024 20:25:11] "POST /login HTTP/1.1" 200 -
+2024-07-31 20:25 - ERROR - An error occurred
+Traceback (most recent call last):
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 841, in dispatch_request
+    self.raise_routing_exception(req)
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 450, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2024-07-31 20:25 - INFO - 127.0.0.1 - - [31/Jul/2024 20:25:11] "GET /favicon.ico HTTP/1.1" 200 -
+2024-07-31 20:27 - INFO - 127.0.0.1 - - [31/Jul/2024 20:27:18] "[32mGET / HTTP/1.1[0m" 302 -
+2024-07-31 20:27 - INFO - 127.0.0.1 - - [31/Jul/2024 20:27:18] "GET /login HTTP/1.1" 200 -
+2024-07-31 20:27 - ERROR - An error occurred
+Traceback (most recent call last):
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 841, in dispatch_request
+    self.raise_routing_exception(req)
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\app.py", line 450, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CSSECDV-MP\CSSECDV-MP\.venv\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2024-07-31 20:27 - INFO - 127.0.0.1 - - [31/Jul/2024 20:27:19] "GET /favicon.ico HTTP/1.1" 200 -
+2024-07-31 20:29 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on https://127.0.0.1:5000
+2024-07-31 20:29 - INFO - [33mPress CTRL+C to quit[0m
+2024-07-31 20:29 - INFO -  * Restarting with stat
+2024-07-31 20:29 - WARNING -  * Debugger is active!
+2024-07-31 20:29 - INFO -  * Debugger PIN: 141-372-692
+2024-07-31 20:29 - INFO - 127.0.0.1 - - [31/Jul/2024 20:29:31] "[32mGET / HTTP/1.1[0m" 302 -
+2024-07-31 20:29 - INFO - 127.0.0.1 - - [31/Jul/2024 20:29:31] "GET /login HTTP/1.1" 200 -
+2024-07-31 20:29 - INFO - 127.0.0.1 - - [31/Jul/2024 20:29:32] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-07-31 20:29 - INFO - Invalid login
+2024-07-31 20:29 - INFO - 127.0.0.1 - - [31/Jul/2024 20:29:50] "POST /login HTTP/1.1" 200 -
+2024-07-31 20:30 - INFO - User melanie_aquino@dlsu.edu.ph is logged in
+2024-07-31 20:30 - INFO - 127.0.0.1 - - [31/Jul/2024 20:30:14] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-07-31 20:30 - INFO - 127.0.0.1 - - [31/Jul/2024 20:30:14] "GET / HTTP/1.1" 200 -
+2024-07-31 20:31 - INFO - 127.0.0.1 - - [31/Jul/2024 20:31:21] "[32mGET /admin HTTP/1.1[0m" 308 -
+2024-07-31 20:31 - INFO - 127.0.0.1 - - [31/Jul/2024 20:31:21] "GET /admin/ HTTP/1.1" 200 -
+2024-07-31 20:31 - INFO - 127.0.0.1 - - [31/Jul/2024 20:31:56] "[32mPOST /admin/3/reset-pass/name@lastname.com HTTP/1.1[0m" 302 -
+2024-07-31 20:31 - INFO - 127.0.0.1 - - [31/Jul/2024 20:31:56] "[32mGET /admin HTTP/1.1[0m" 308 -
+2024-07-31 20:31 - INFO - 127.0.0.1 - - [31/Jul/2024 20:31:56] "GET /admin/ HTTP/1.1" 200 -

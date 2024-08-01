@@ -149,7 +149,8 @@ def login():
                 else:
                     login_attempts[client_ip] = [1, time.time()]
 
-        return render_template('login.html', msg=msg)    
+        return render_template('login.html', msg=msg) 
+   
 def logout():
     if session and 'loggedin' in session.keys() and session['loggedin']:
         session.pop('loggedin', None)

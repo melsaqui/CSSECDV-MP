@@ -9,11 +9,10 @@ from flask_mysqldb import MySQL
 import traceback
 from flask_bootstrap import Bootstrap4
 bootstrap = Bootstrap4()
-
 import os
 from dotenv import load_dotenv
 load_dotenv()
-app = Flask(__name__)
+app = Flask(__name__,template_folder='templates')
 from flask_mysqldb import MySQL
 app.permanent_session_lifetime = timedelta(minutes=30) #set lifetime session to 30 minute
 
@@ -33,7 +32,7 @@ app.register_blueprint(auth_bp)
 app.register_blueprint(admin_bp,url_prefix="/admin")
 app.register_blueprint(user_bp,url_prefix="/user")
 
-@app.errorhandler(Exception)
+app.errorhandler(Exception)
 def handle_exception(e):
     # Log the exception
     logger.exception("An error occurred")
@@ -47,5 +46,5 @@ def handle_exception(e):
         return "<h1>Soryy, An internal error occurred<h1>", 500
 
 if __name__ == '__main__':
-   # app.debug = True #can remove this since its in config.py
+    app.debug = True #can remove this since its in config.py
     app.run(ssl_context=('abc.crt','abc.key'))
