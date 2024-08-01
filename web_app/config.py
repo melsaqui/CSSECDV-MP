@@ -16,14 +16,14 @@ import logging
 logging.basicConfig(
      format="{asctime} - {levelname} - {message}",
      style="{",
-     datefmt="%Y-%m-%d %H:%M",
+     datefmt="%Y-%m-%d %H:%M:%S",
      level=logging.DEBUG,
      filename=path
 )
 
 load_dotenv("../")
 # Enable debug mode.
-DEBUG = True
+DEBUG = False #Should be false by default
 #Make your own .env file with your mysql configurations
 MYSQL_HOST = os.getenv("MYSQL_HOST")
 MYSQL_USER = os.getenv("MYSQL_USER")
