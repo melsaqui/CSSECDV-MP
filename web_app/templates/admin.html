@@ -41,7 +41,7 @@
     <tr>
         <th style="width: 300px">Users</th>
         <th style="width: 100px; text-align: center;">Roles</th>
-        <th colspan=3 style="text-align: center;">Modify Users' Account</th>
+        <th colspan=3 style="text-align: center;width: 100px">Modify Users' Account</th>
         <!--th style="width: 100px; text-align: center;">Edit User Profile</th-->
         <!--th style="width: 100px; text-align: center;">Reset User Password</th-->
 
@@ -55,26 +55,23 @@
 
         <td style = "text-align: center; font-weight: bold;"> {{ r["role"] }} </td>
         {% elif r["role"] == 'Regular' %}
-        <td style = "text-align: center;"> {{ r["role"] }} </td>
+        <td style = "text-align: center;width: 100px"> {{ r["role"] }} </td>
         {% endif %}
-        <td style = "text-align: center;">  
-            <!--a href="/admin/change-role/{{r['id']}}"-->
-                {% if r["role"] == 'Admin' %}
-                <!--button style="width: 90px;">Downgrade</button-->
-                <button style="width: 100px;" type="button" data-toggle="modal" class="btn btn-outline-danger btn-sm" data-target="#role_change_{{r['id']}}">Downgrade Role</button>
+        <td style = "text-align: center;width: 100px"  >
+            {% if r["role"] == 'Admin' %}
+            <button style="width: 100px;" type="button" data-toggle="modal" class="btn btn-outline-danger btn-sm" data-target="#role_change_{{r['id']}}">Downgrade Role</button>
 
-                {% elif r["role"] == 'Regular' %}
-                <button style="width: 100px" type="button" data-toggle="modal" class="btn btn-outline-success btn-sm" data-target="#role_change_{{r['id']}}">Upgrade Role</button>
-                {% endif %}
+            {% elif r["role"] == 'Regular' %}
+            <button style="width: 100px" type="button" data-toggle="modal" class="btn btn-outline-success btn-sm" data-target="#role_change_{{r['id']}}">Upgrade Role</button>
+            {% endif %}
  
-            <!--/a-->
         </td>
-        <td style = "text-align: center;">  
+        <td style = "text-align: center;width: 100px">
                 {% if r["role"] == 'Regular' %}
                 <button style="width: 90px;" type="button" data-toggle="modal" class="btn btn-outline-info btn-sm" data-target ="#update_profile_{{r['id']}}">Edit Profie Details</button>
                 {% endif %}
         </td>
-        <td style = "text-align: center;">  
+        <td style = "text-align: center;width: 100px">  
             {% if r["role"] == 'Regular' %}
             <button style="width: 90px;" type="button" data-toggle="modal" class="btn btn-outline-dark btn-sm" data-target ="#reset_{{r['id']}}_pass">Reset Password</button>
             {% endif %}
@@ -248,7 +245,44 @@
     </header>
    
   </section>
-<p> </p>
+
+<button style="width: 700px; margin-top: 20px;" type="button" data-toggle="modal" class="btn btn-danger btn-sm" data-target="#delete_all_users">DELETE ALL NON-ADMIN ACCOUNTS</button>
+<!--modal for role change-->
+<div class="modal fade" id="delete_all_users" role="dialog">
+    <div class="modal-dialog">
+       <!-- Modal content-->
+        <div class="modal-content">
+        <div class="modal-header">
+            
+            <h4 class="modal-title" id="myModalLabel">DELETE ALL</h4>
+            <button type="button" class="close" data-dismiss="modal"
+                aria-hidden="true">&times;</button>
+        </div>
+        <form action="/admin/delete-all" method="post">
+            <div class="modal-body" >
+                <div class="form-group row">
+                    <label class="col-sm-12 col-form-label">Are you sure you want to delete all non-admin accounts??</label>
+                </div>
+                <div>
+                    <label for="admin-pass" style='font-weight:bold; padding: 5px' class="col-xs-5 control-label" >Confirm With Your Password</label>
+                    <div class="col-xs-10">
+                        <input type="password" class="form-control" name="admin-pass-del_all"
+                            value="" required/>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                    data-dismiss="modal">Close</button>
+
+                    <button type="submit" class="btn btn-danger">Delete All</button>
+            </div>
+        </form>
+    </div>
+    </div>
+</div>
+
+<p></p>
 <a href ="/" role="button" class="btn-primary btn-lg active">Home</a>
 <a href="/logout" role ="button" class="btn-light btn-lg active">Logout</a>
 </body>

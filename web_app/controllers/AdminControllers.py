@@ -201,7 +201,7 @@ def edit(target_id,target_email):
                         return redirect('/admin') 
                 else:
                     #target cannot be admin
-                    flash ("Error Editing: You cannot edit a the profile of a fellow admin")  
+                    flash ("Error Editing: You cannot edit the profile of a fellow admin")  
                     logger.info("Failed due to target being admin")
 
                     return redirect("/admin")
@@ -272,6 +272,33 @@ def reset_pass(target_id, target_email):
                     else:
                         pass_attempts[client_ip] = [1, time.time()]
                     return redirect('/admin')
+        else:
+            return redirect('/')
+    else:
+        return redirect('/login')
+def delete_all():
+    if session and 'loggedin' in session.keys() and session['loggedin']:
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE id =%s and email=%s', (session['id'], session['email']))
+        account = cursor.fetchone()
+        if account['admin'] ==1:
+            if request.method == 'POST' and 'admin-pass-del_all' in request.form:
+                adminpass = request.form['admin-pass-del_all']
+                if account['admin'] and bcrypt.checkpw(adminpass.encode('utf-8'), account['password']):
+                    cursor.execute("DELETE FROM `cssecdv-mp`.accounts WHERE `admin`= '0';")
+                    mysql.connection.commit()
+                    logger.info(f"{session['email']} deleted all the non-admin accounts")
+                    flash("All Regular users have been deleted")
+                    return redirect('/admin')
+                else:
+                    logger.info("Invalid password entered")   
+                    flash("Invalid password entered",category='error')
+                    return redirect('/admin')
+                    
+            else:
+                flash("Something happened")
+                logger.info("Error")
+                return redirect('/admin')
         else:
             return redirect('/')
     else:
