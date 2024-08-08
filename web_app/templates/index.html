@@ -18,19 +18,27 @@
       crossorigin="anonymous">
      </script-->
 </head>
-<body style ="padding: 15px;">
+<body style="padding: 15px;">
     <h1>Home</h1>
-    <p>Hello <a href = '/user'>{{ user }}</a></p>
+    <p>Hello <a href='/user'>{{ user }}</a></p>
     {% if admin %}
-        <a href ="/admin" role="button" class="btn-lg btn-dark active">Admin Panel</a>
+        <a href="/admin" role="button" class="btn-lg btn-dark active">Admin Panel</a>
     {% endif %}
-    <a href="/logout" role ="button" class="btn-light btn-lg">Logout</a>
+    <a href="/logout" role="button" class="btn-light btn-lg">Logout</a>
     
-    <form action="/upload-profile-picture" method="post" enctype="multipart/form-data">
+    <!-- Display profile picture -->
+    {% if profile_picture %}
+    <img src="{{ url_for('uploaded_file', filename=profile_picture) }}" alt="Profile Picture" style="width: 150px; height: 150px; object-fit: cover;">
+    {% else %}
+    <p>No profile picture uploaded.</p>
+    {% endif %}
+
+    <form action="{{ url_for('user_bp.upload_profile_picture') }}" method="post" enctype="multipart/form-data">
         <label for="profile_picture">Upload Profile Picture (JPG, PNG only, max 2MB):</label>
         <input type="file" name="profile_picture" accept=".jpg, .jpeg, .png" required>
         <input type="submit" value="Upload">
     </form>
+
     {% if error %}
         <p style="color: red;">{{ error }}</p>
     {% endif %}

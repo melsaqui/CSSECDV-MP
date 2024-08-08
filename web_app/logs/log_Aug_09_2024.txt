@@ -1,0 +1,230 @@
+2024-08-09 00:15:57 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on https://127.0.0.1:5000
+2024-08-09 00:15:57 - INFO - [33mPress CTRL+C to quit[0m
+2024-08-09 00:16:05 - INFO - 127.0.0.1 - - [09/Aug/2024 00:16:05] "GET / HTTP/1.1" 200 -
+2024-08-09 00:16:10 - INFO - 127.0.0.1 - - [09/Aug/2024 00:16:10] "[33mPOST /upload-profile-picture HTTP/1.1[0m" 404 -
+2024-08-09 00:18:50 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on https://127.0.0.1:5000
+2024-08-09 00:18:50 - INFO - [33mPress CTRL+C to quit[0m
+2024-08-09 00:18:57 - INFO - 127.0.0.1 - - [09/Aug/2024 00:18:57] "GET / HTTP/1.1" 200 -
+2024-08-09 00:18:59 - INFO - 127.0.0.1 - - [09/Aug/2024 00:18:59] "GET / HTTP/1.1" 200 -
+2024-08-09 00:19:02 - INFO - 127.0.0.1 - - [09/Aug/2024 00:19:02] "[31m[1mPOST / HTTP/1.1[0m" 405 -
+2024-08-09 00:19:05 - INFO - 127.0.0.1 - - [09/Aug/2024 00:19:05] "GET / HTTP/1.1" 200 -
+2024-08-09 00:19:10 - INFO - 127.0.0.1 - - [09/Aug/2024 00:19:10] "GET / HTTP/1.1" 200 -
+2024-08-09 00:19:11 - INFO - 127.0.0.1 - - [09/Aug/2024 00:19:11] "[31m[1mPOST / HTTP/1.1[0m" 405 -
+2024-08-09 00:19:17 - INFO - 127.0.0.1 - - [09/Aug/2024 00:19:17] "GET / HTTP/1.1" 200 -
+2024-08-09 00:19:22 - INFO - 127.0.0.1 - - [09/Aug/2024 00:19:22] "[32mGET /user HTTP/1.1[0m" 308 -
+2024-08-09 00:19:22 - INFO - 127.0.0.1 - - [09/Aug/2024 00:19:22] "GET /user/ HTTP/1.1" 200 -
+2024-08-09 00:19:23 - INFO - 127.0.0.1 - - [09/Aug/2024 00:19:23] "GET / HTTP/1.1" 200 -
+2024-08-09 00:19:26 - INFO - 127.0.0.1 - - [09/Aug/2024 00:19:26] "[31m[1mPOST / HTTP/1.1[0m" 405 -
+2024-08-09 00:19:27 - INFO - 127.0.0.1 - - [09/Aug/2024 00:19:27] "GET / HTTP/1.1" 200 -
+2024-08-09 00:21:12 - INFO - 127.0.0.1 - - [09/Aug/2024 00:21:12] "[32mGET /user HTTP/1.1[0m" 308 -
+2024-08-09 00:21:12 - INFO - 127.0.0.1 - - [09/Aug/2024 00:21:12] "GET /user/ HTTP/1.1" 200 -
+2024-08-09 00:22:03 - INFO - 127.0.0.1 - - [09/Aug/2024 00:22:03] "GET / HTTP/1.1" 200 -
+2024-08-09 00:59:36 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on https://127.0.0.1:5000
+2024-08-09 00:59:37 - INFO - [33mPress CTRL+C to quit[0m
+2024-08-09 00:59:46 - INFO - 127.0.0.1 - - [09/Aug/2024 00:59:46] "[32mGET / HTTP/1.1[0m" 302 -
+2024-08-09 00:59:46 - INFO - 127.0.0.1 - - [09/Aug/2024 00:59:46] "GET /login HTTP/1.1" 200 -
+2024-08-09 00:59:51 - INFO - User mylucky21st@gmail.com is logged in
+2024-08-09 00:59:51 - INFO - 127.0.0.1 - - [09/Aug/2024 00:59:51] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-08-09 00:59:51 - INFO - 127.0.0.1 - - [09/Aug/2024 00:59:51] "GET / HTTP/1.1" 200 -
+2024-08-09 00:59:57 - INFO - 127.0.0.1 - - [09/Aug/2024 00:59:57] "[33mPOST /upload-profile-picture HTTP/1.1[0m" 404 -
+2024-08-09 01:23:10 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on https://127.0.0.1:5000
+2024-08-09 01:23:10 - INFO - [33mPress CTRL+C to quit[0m
+2024-08-09 01:23:14 - INFO - 127.0.0.1 - - [09/Aug/2024 01:23:14] "GET / HTTP/1.1" 200 -
+2024-08-09 01:23:14 - INFO - 127.0.0.1 - - [09/Aug/2024 01:23:14] "GET / HTTP/1.1" 200 -
+2024-08-09 01:23:18 - INFO - 127.0.0.1 - - [09/Aug/2024 01:23:18] "[32mGET /user HTTP/1.1[0m" 308 -
+2024-08-09 01:23:18 - ERROR - Exception on /user/ [GET]
+Traceback (most recent call last):
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GitHub\CSSECDV-MP\web_app\controllers\ProfileControllers.py", line 67, in profile
+    return render_template('profile.html', admin=account['admin'], profile_picture=account.get('profile_picture'), user=session['email'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\GitHub\CSSECDV-MP\web_app\templates\profile.html", line 22, in top-level template code
+    <h1>{{ info['fname'] }}'s Profile</h1>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\jinja2\environment.py", line 466, in getitem
+    return obj[argument]
+           ~~~^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'info' is undefined
+2024-08-09 01:23:18 - INFO - 127.0.0.1 - - [09/Aug/2024 01:23:18] "[35m[1mGET /user/ HTTP/1.1[0m" 500 -
+2024-08-09 01:23:20 - INFO - 127.0.0.1 - - [09/Aug/2024 01:23:20] "[32mGET /user HTTP/1.1[0m" 308 -
+2024-08-09 01:23:20 - ERROR - Exception on /user/ [GET]
+Traceback (most recent call last):
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GitHub\CSSECDV-MP\web_app\controllers\ProfileControllers.py", line 67, in profile
+    return render_template('profile.html', admin=account['admin'], profile_picture=account.get('profile_picture'), user=session['email'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\GitHub\CSSECDV-MP\web_app\templates\profile.html", line 22, in top-level template code
+    <h1>{{ info['fname'] }}'s Profile</h1>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\jinja2\environment.py", line 466, in getitem
+    return obj[argument]
+           ~~~^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'info' is undefined
+2024-08-09 01:23:20 - INFO - 127.0.0.1 - - [09/Aug/2024 01:23:20] "[35m[1mGET /user/ HTTP/1.1[0m" 500 -
+2024-08-09 01:23:21 - INFO - mylucky21st@gmail.com logged out
+2024-08-09 01:23:21 - INFO - 127.0.0.1 - - [09/Aug/2024 01:23:21] "[32mGET /logout HTTP/1.1[0m" 302 -
+2024-08-09 01:23:22 - INFO - 127.0.0.1 - - [09/Aug/2024 01:23:22] "GET /login HTTP/1.1" 200 -
+2024-08-09 01:23:28 - INFO - User mylucky21st@gmail.com is logged in
+2024-08-09 01:23:28 - INFO - 127.0.0.1 - - [09/Aug/2024 01:23:28] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-08-09 01:23:28 - INFO - 127.0.0.1 - - [09/Aug/2024 01:23:28] "GET / HTTP/1.1" 200 -
+2024-08-09 01:23:30 - INFO - 127.0.0.1 - - [09/Aug/2024 01:23:30] "[32mGET /user HTTP/1.1[0m" 308 -
+2024-08-09 01:23:30 - ERROR - Exception on /user/ [GET]
+Traceback (most recent call last):
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GitHub\CSSECDV-MP\web_app\controllers\ProfileControllers.py", line 67, in profile
+    return render_template('profile.html', admin=account['admin'], profile_picture=account.get('profile_picture'), user=session['email'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\GitHub\CSSECDV-MP\web_app\templates\profile.html", line 22, in top-level template code
+    <h1>{{ info['fname'] }}'s Profile</h1>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\jinja2\environment.py", line 466, in getitem
+    return obj[argument]
+           ~~~^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'info' is undefined
+2024-08-09 01:23:30 - INFO - 127.0.0.1 - - [09/Aug/2024 01:23:30] "[35m[1mGET /user/ HTTP/1.1[0m" 500 -
+2024-08-09 01:23:35 - INFO - Profile picture uploaded by mylucky21st@gmail.com
+2024-08-09 01:23:35 - INFO - 127.0.0.1 - - [09/Aug/2024 01:23:35] "[32mPOST /user/upload-profile-picture HTTP/1.1[0m" 302 -
+2024-08-09 01:23:35 - ERROR - Exception on /user/ [GET]
+Traceback (most recent call last):
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GitHub\CSSECDV-MP\web_app\controllers\ProfileControllers.py", line 67, in profile
+    return render_template('profile.html', admin=account['admin'], profile_picture=account.get('profile_picture'), user=session['email'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\GitHub\CSSECDV-MP\web_app\templates\profile.html", line 22, in top-level template code
+    <h1>{{ info['fname'] }}'s Profile</h1>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myluc\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\jinja2\environment.py", line 466, in getitem
+    return obj[argument]
+           ~~~^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'info' is undefined
+2024-08-09 01:23:35 - INFO - 127.0.0.1 - - [09/Aug/2024 01:23:35] "[35m[1mGET /user/ HTTP/1.1[0m" 500 -
+2024-08-09 01:23:37 - INFO - 127.0.0.1 - - [09/Aug/2024 01:23:37] "GET / HTTP/1.1" 200 -
+2024-08-09 01:31:02 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on https://127.0.0.1:5000
+2024-08-09 01:31:02 - INFO - [33mPress CTRL+C to quit[0m
+2024-08-09 01:31:09 - INFO - 127.0.0.1 - - [09/Aug/2024 01:31:09] "GET / HTTP/1.1" 200 -
+2024-08-09 01:31:11 - INFO - mylucky21st@gmail.com logged out
+2024-08-09 01:31:11 - INFO - 127.0.0.1 - - [09/Aug/2024 01:31:11] "[32mGET /logout HTTP/1.1[0m" 302 -
+2024-08-09 01:31:11 - INFO - 127.0.0.1 - - [09/Aug/2024 01:31:11] "GET /login HTTP/1.1" 200 -
+2024-08-09 01:31:15 - INFO - User mylucky21st@gmail.com is logged in
+2024-08-09 01:31:15 - INFO - 127.0.0.1 - - [09/Aug/2024 01:31:15] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-08-09 01:31:15 - INFO - 127.0.0.1 - - [09/Aug/2024 01:31:15] "GET / HTTP/1.1" 200 -
+2024-08-09 01:31:16 - INFO - 127.0.0.1 - - [09/Aug/2024 01:31:16] "[32mGET /user HTTP/1.1[0m" 308 -
+2024-08-09 01:31:16 - INFO - 127.0.0.1 - - [09/Aug/2024 01:31:16] "GET /user/ HTTP/1.1" 200 -
+2024-08-09 01:32:04 - INFO - 127.0.0.1 - - [09/Aug/2024 01:32:04] "GET / HTTP/1.1" 200 -
+2024-08-09 01:32:20 - INFO - 127.0.0.1 - - [09/Aug/2024 01:32:20] "[33mPOST /upload-profile-picture HTTP/1.1[0m" 404 -
+2024-08-09 01:32:34 - INFO - 127.0.0.1 - - [09/Aug/2024 01:32:34] "GET / HTTP/1.1" 200 -
+2024-08-09 01:32:46 - INFO - 127.0.0.1 - - [09/Aug/2024 01:32:46] "[33mPOST /upload-profile-picture HTTP/1.1[0m" 404 -
+2024-08-09 01:45:26 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on https://127.0.0.1:5000
+2024-08-09 01:45:26 - INFO - [33mPress CTRL+C to quit[0m
+2024-08-09 01:45:30 - INFO - 127.0.0.1 - - [09/Aug/2024 01:45:30] "GET / HTTP/1.1" 200 -
+2024-08-09 01:45:32 - INFO - 127.0.0.1 - - [09/Aug/2024 01:45:32] "[32mGET /user HTTP/1.1[0m" 308 -
+2024-08-09 01:45:32 - INFO - 127.0.0.1 - - [09/Aug/2024 01:45:32] "GET /user/ HTTP/1.1" 200 -
+2024-08-09 01:45:33 - INFO - 127.0.0.1 - - [09/Aug/2024 01:45:33] "GET / HTTP/1.1" 200 -
+2024-08-09 01:45:34 - INFO - mylucky21st@gmail.com logged out
+2024-08-09 01:45:34 - INFO - 127.0.0.1 - - [09/Aug/2024 01:45:34] "[32mGET /logout HTTP/1.1[0m" 302 -
+2024-08-09 01:45:34 - INFO - 127.0.0.1 - - [09/Aug/2024 01:45:34] "GET /login HTTP/1.1" 200 -
+2024-08-09 01:45:39 - INFO - User mylucky21st@gmail.com is logged in
+2024-08-09 01:45:39 - INFO - 127.0.0.1 - - [09/Aug/2024 01:45:39] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-08-09 01:45:39 - INFO - 127.0.0.1 - - [09/Aug/2024 01:45:39] "GET / HTTP/1.1" 200 -
+2024-08-09 01:45:42 - INFO - mylucky21st@gmail.com logged out
+2024-08-09 01:45:42 - INFO - 127.0.0.1 - - [09/Aug/2024 01:45:42] "[32mGET /logout HTTP/1.1[0m" 302 -
+2024-08-09 01:45:42 - INFO - 127.0.0.1 - - [09/Aug/2024 01:45:42] "GET /login HTTP/1.1" 200 -
+2024-08-09 01:45:42 - INFO - 127.0.0.1 - - [09/Aug/2024 01:45:42] "GET /register HTTP/1.1" 200 -
+2024-08-09 01:45:44 - INFO - 127.0.0.1 - - [09/Aug/2024 01:45:44] "GET /login HTTP/1.1" 200 -
+2024-08-09 01:45:48 - INFO - User mylucky21st@gmail.com is logged in
+2024-08-09 01:45:48 - INFO - 127.0.0.1 - - [09/Aug/2024 01:45:48] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-08-09 01:45:48 - INFO - 127.0.0.1 - - [09/Aug/2024 01:45:48] "GET / HTTP/1.1" 200 -
+2024-08-09 01:45:54 - INFO - Profile picture uploaded by mylucky21st@gmail.com
+2024-08-09 01:45:54 - INFO - 127.0.0.1 - - [09/Aug/2024 01:45:54] "[32mPOST /user/upload-profile-picture HTTP/1.1[0m" 302 -
+2024-08-09 01:45:54 - INFO - 127.0.0.1 - - [09/Aug/2024 01:45:54] "GET /user/ HTTP/1.1" 200 -
+2024-08-09 01:45:58 - INFO - 127.0.0.1 - - [09/Aug/2024 01:45:58] "GET / HTTP/1.1" 200 -

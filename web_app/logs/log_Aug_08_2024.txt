@@ -1,0 +1,26 @@
+2024-08-08 23:47:39 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on https://127.0.0.1:5000
+2024-08-08 23:47:39 - INFO - [33mPress CTRL+C to quit[0m
+2024-08-08 23:47:57 - INFO - 127.0.0.1 - - [08/Aug/2024 23:47:57] "GET / HTTP/1.1" 200 -
+2024-08-08 23:47:57 - INFO - 127.0.0.1 - - [08/Aug/2024 23:47:57] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-08-08 23:48:00 - INFO - mylucky21st@gmail.com logged out
+2024-08-08 23:48:00 - INFO - 127.0.0.1 - - [08/Aug/2024 23:48:00] "[32mGET /logout HTTP/1.1[0m" 302 -
+2024-08-08 23:48:00 - INFO - 127.0.0.1 - - [08/Aug/2024 23:48:00] "GET /login HTTP/1.1" 200 -
+2024-08-08 23:48:06 - INFO - User mylucky21st@gmail.com is logged in
+2024-08-08 23:48:06 - INFO - 127.0.0.1 - - [08/Aug/2024 23:48:06] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-08-08 23:48:06 - INFO - 127.0.0.1 - - [08/Aug/2024 23:48:06] "GET / HTTP/1.1" 200 -
+2024-08-08 23:48:10 - INFO - 127.0.0.1 - - [08/Aug/2024 23:48:10] "[33mPOST /upload-profile-picture HTTP/1.1[0m" 404 -
+2024-08-08 23:48:11 - INFO - 127.0.0.1 - - [08/Aug/2024 23:48:11] "GET / HTTP/1.1" 200 -
+2024-08-08 23:50:31 - INFO - 127.0.0.1 - - [08/Aug/2024 23:50:31] "[32mGET /user HTTP/1.1[0m" 308 -
+2024-08-08 23:50:33 - INFO - 127.0.0.1 - - [08/Aug/2024 23:50:33] "GET /user/ HTTP/1.1" 200 -
+2024-08-08 23:50:39 - INFO - mylucky21st@gmail.com logged out
+2024-08-08 23:50:39 - INFO - 127.0.0.1 - - [08/Aug/2024 23:50:39] "[32mGET /logout HTTP/1.1[0m" 302 -
+2024-08-08 23:50:39 - INFO - 127.0.0.1 - - [08/Aug/2024 23:50:39] "GET /login HTTP/1.1" 200 -
+2024-08-08 23:51:41 - INFO - Invalid login
+2024-08-08 23:51:41 - INFO - 127.0.0.1 - - [08/Aug/2024 23:51:41] "POST /login HTTP/1.1" 200 -
+2024-08-08 23:51:49 - INFO - User mylucky21st@gmail.com is logged in
+2024-08-08 23:51:49 - INFO - 127.0.0.1 - - [08/Aug/2024 23:51:49] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-08-08 23:51:49 - INFO - 127.0.0.1 - - [08/Aug/2024 23:51:49] "GET / HTTP/1.1" 200 -
+2024-08-08 23:52:26 - INFO - 127.0.0.1 - - [08/Aug/2024 23:52:26] "[32mGET /user HTTP/1.1[0m" 308 -
+2024-08-08 23:52:26 - INFO - 127.0.0.1 - - [08/Aug/2024 23:52:26] "GET /user/ HTTP/1.1" 200 -
+2024-08-08 23:54:00 - INFO - 127.0.0.1 - - [08/Aug/2024 23:54:00] "GET / HTTP/1.1" 200 -

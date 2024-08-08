@@ -8,7 +8,7 @@ import re
 from werkzeug.utils import secure_filename
 import sys
 from datetime import timedelta,datetime
-
+from flask import current_app
 #from flask_bootstrap import Bootstrap4
 #bootstrap = Bootstrap4()
 import pandas as pd
@@ -16,6 +16,7 @@ import logging
 
 mysql = MySQL()
 logger = logging.getLogger(__name__)
+MAX_CONTENT_LENGTH = 2 * 1024 * 1024  # 2 MB
 
 def profile():
     if session and 'loggedin' in session.keys() and session['loggedin']:
@@ -25,6 +26,39 @@ def profile():
         return render_template('profile.html',admin=account['admin'],info=account)
     else:
         return redirect('/login')
+    
+app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = os.path.join(os.path.dirname(__file__), 'Uploads')
+    
+def allowed_file(filename):
+    allowed_extensions = {'png', 'jpg', 'jpeg'}
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in allowed_extensions
+    
+def upload_profile_picture():
+    if 'profile_picture' not in request.files:
+        flash('No file part', 'error')
+        return redirect(url_for('user_bp.profile'))
+
+    file = request.files.get('profile_picture')
+    if file.filename == '':
+        flash('No selected file', 'error')
+        return redirect(url_for('user_bp.profile'))
+
+    if file and allowed_file(file.filename):
+        if file.content_length > MAX_CONTENT_LENGTH:
+            flash('File size exceeds 2 MB limit', 'error')
+            return redirect(url_for('user_bp.profile'))
+
+        filename = secure_filename(file.filename)
+        upload_folder = current_app.config.get('UPLOAD_FOLDER', 'uploads')
+        file.save(os.path.join(upload_folder, filename))
+        flash('Profile picture uploaded successfully', 'success')
+        logger.info(f'Profile picture uploaded by {session.get("email")}')
+        return redirect(url_for('user_bp.profile'))
+    else:
+        flash('Invalid file type', 'error')
+        return redirect(url_for('user_bp.profile'))
+
     
 def valid_date(date): #valid considering february and 30 and 31 days months
     date_split = str(date).split('-')

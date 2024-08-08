@@ -19,6 +19,7 @@ app.permanent_session_lifetime = timedelta(minutes=30) #set lifetime session to 
 mysql = MySQL(app)
 
 app.config.from_object('config')
+#app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER  # Set the upload folder path
 bootstrap.init_app(app)
 
 #db.init_app(app)
@@ -31,6 +32,11 @@ logger = logging.getLogger(__name__)
 app.register_blueprint(auth_bp)
 app.register_blueprint(admin_bp,url_prefix="/admin")
 app.register_blueprint(user_bp,url_prefix="/user")
+
+# Serve uploaded files
+@app.route('/Uploads/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
 app.errorhandler(Exception)
 def handle_exception(e):
