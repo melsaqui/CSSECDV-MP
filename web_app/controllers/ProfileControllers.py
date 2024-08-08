@@ -52,7 +52,11 @@ def upload_profile_picture():
         filename = secure_filename(file.filename)
         upload_folder = current_app.config.get('UPLOAD_FOLDER', 'uploads')
         file.save(os.path.join(upload_folder, filename))
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute("UPDATE `cssecdv-mp`.accounts SET `profile_pic` =%s WHERE id=%s and email=%s",(file.filename,session['id'], session['email']))
+        mysql.connection.commit()
         flash('Profile picture uploaded successfully', 'success')
+        
         logger.info(f'Profile picture uploaded by {session.get("email")}')
         return redirect(url_for('user_bp.profile'))
     else:
