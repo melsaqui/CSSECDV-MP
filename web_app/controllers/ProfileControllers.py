@@ -17,18 +17,20 @@ import logging
 mysql = MySQL()
 logger = logging.getLogger(__name__)
 MAX_CONTENT_LENGTH = 2 * 1024 * 1024  # 2 MB
-
+app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = os.path.join(os.path.dirname(__file__), 'Uploads')
 def profile():
     if session and 'loggedin' in session.keys() and session['loggedin']:
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute('SELECT * FROM `cssecdv-mp`.accounts WHERE email = %s and id = %s', (session['email'], session['id'],))
         account = cursor.fetchone()
+        
         return render_template('profile.html',admin=account['admin'],info=account)
+        #return render_template('profile.html',admin=account['admin'],info=account,img="../Uploads/"+account['profile_pic'])
     else:
         return redirect('/login')
     
-app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = os.path.join(os.path.dirname(__file__), 'Uploads')
+
     
 def allowed_file(filename):
     allowed_extensions = {'png', 'jpg', 'jpeg'}
@@ -115,7 +117,7 @@ def edit():
                 flash(f"Invalid birthday {bday}",category ='error')
                 logger.info("Invalid date format")
 
-
+                
             elif not valid_date(bday):
                 flash(f"Invalid birthday {bday}",category ='error') 
                 logger.info("Invalid date")
